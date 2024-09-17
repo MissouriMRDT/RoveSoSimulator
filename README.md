@@ -92,9 +92,14 @@ The simulation is fully customizable. Add new environments, tweak sensor configu
 ### 1️⃣ **Clone the Repository**
 
 ```bash
-git clone https://github.com/MissouriMRDT/RoveSoSimulator.git
+git clone --recurse-submodules https://github.com/MissouriMRDT/RoveSoSimulator.git
 cd RoveSoSimulator
 ```
+
+The `Content` directory in this project is a submodule that links to our self-hosted GitLab instance for unlimited Git LFS storage. Please be aware that the server has a 1000GB monthly bandwidth limit. Large pushes should be carefully considered as exceeding this limit WILL incur additional costs.
+
+You can access the GitLab repository for the `Content` directory here: [Content Repository](https://gitlab.craysoftware.com/mrdt_blobs/Content). **The `Content` directory is very large, so expect a 2-3 hour initial clone time.**
+
 
 ### 2️⃣ **Install Prerequisites**
 Make sure you have the following installed:
