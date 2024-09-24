@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=/usr/local
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: RoveComm_CPP
+Description: 
+Version: 3.00.00
+
+Requires:
+Libs: -L${libdir} -lRoveComm_CPP
+Cflags: -I${includedir}
