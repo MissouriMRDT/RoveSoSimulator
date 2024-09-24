@@ -18,5 +18,15 @@ public class RoveSoSimulator : ModuleRules
             "Engine",
             "InputCore",
         });
+
+        // Define libraries based on platform
+        if (Target.Platform == UnrealTargetPlatform.Win64)
+        {
+            CMakeTarget.add(Target, this, "RoveComm_CPP", Path.Combine(this.ModuleDirectory, "./ThirdParty/RoveComm_CPP"), "-DBUILD_WIN=ON -D__ROVECOMM_LIBRARY_MODE__=0", true);
+        }
+        else if (Target.Platform == UnrealTargetPlatform.Linux)
+        {
+            CMakeTarget.add(Target, this, "RoveComm_CPP", Path.Combine(this.ModuleDirectory, "./ThirdParty/RoveComm_CPP"), "-D__ROVECOMM_LIBRARY_MODE__=0", true);
+        }
     }
 }
