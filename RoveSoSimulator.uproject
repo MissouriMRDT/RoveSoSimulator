@@ -57,12 +57,15 @@
 		{
 			"Name": "ChaosVehiclesPlugin",
 			"Enabled": true
+		},
+		{
+			"Name": "CMakeTarget",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
 		"Linux",
 		"Windows",
-		"LinuxArm64",
-		"Android"
+		"LinuxArm64"
 	]
 }

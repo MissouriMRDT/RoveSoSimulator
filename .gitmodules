@@ -1,3 +1,6 @@
 [submodule "Content"]
 	path = Content
 	url = ssh://onedev.craysoftware.com/Content
+[submodule "Plugins/UE4CMake"]
+	path = Plugins/UE4CMake
+	url = git@github.com:caseymcc/UE4CMake.git
