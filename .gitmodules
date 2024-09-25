@@ -7,3 +7,6 @@
 [submodule "Source/RoveSoSimulator/ThirdParty/RoveComm_CPP"]
 	path = Source/RoveSoSimulator/ThirdParty/RoveComm_CPP
 	url = git@github.com:MissouriMRDT/RoveComm_CPP.git
+[submodule "Source/RoveSoSimulator/ThirdParty/geographiclib"]
+	path = Source/RoveSoSimulator/ThirdParty/geographiclib
+	url = git@github.com:geographiclib/geographiclib.git

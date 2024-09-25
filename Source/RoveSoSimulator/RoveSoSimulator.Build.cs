@@ -22,11 +22,12 @@ public class RoveSoSimulator : ModuleRules
         // Define libraries based on platform
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            CMakeTarget.add(Target, this, "RoveComm_CPP", Path.Combine(this.ModuleDirectory, "./ThirdParty/RoveComm_CPP"), "-DBUILD_WIN=ON -D__ROVECOMM_LIBRARY_MODE__=0 -DBUILD_TESTS_MODE=OFF", true);
+            // CMakeTarget.add(Target, this, "RoveComm_CPP", Path.Combine(this.ModuleDirectory, "./ThirdParty/RoveComm_CPP"), "-DBUILD_WIN=ON -D__ROVECOMM_LIBRARY_MODE__=0 -DBUILD_TESTS_MODE=OFF", true);
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            CMakeTarget.add(Target, this, "RoveComm_CPP", Path.Combine(this.ModuleDirectory, "./ThirdParty/RoveComm_CPP"), "-D__ROVECOMM_LIBRARY_MODE__=0 -DBUILD_TESTS_MODE=OFF", true);
+            // CMakeTarget.add(Target, this, "RoveComm_CPP", Path.Combine(this.ModuleDirectory, "./ThirdParty/RoveComm_CPP"), "-D__ROVECOMM_LIBRARY_MODE__=0 -DBUILD_TESTS_MODE=OFF", true);
+            // CMakeTarget.add(Target, this, "GeographicLib", Path.Combine(this.ModuleDirectory, "./ThirdParty/geographiclib"), "", true);
         }
     }
 }

@@ -23,14 +23,6 @@
 			"Enabled": true
 		},
 		{
-			"Name": "GeoReferencing",
-			"Enabled": true
-		},
-		{
-			"Name": "PCG",
-			"Enabled": true
-		},
-		{
 			"Name": "DatasmithC4DImporter",
 			"Enabled": true,
 			"SupportedTargetPlatforms": [
@@ -59,7 +51,11 @@
 			"Enabled": true
 		},
 		{
-			"Name": "CMakeTarget",
+			"Name": "GeoReferencing",
+			"Enabled": true
+		},
+		{
+			"Name": "PCG",
 			"Enabled": true
 		}
 	],
