@@ -2,5 +2,6 @@
 
 #pragma once
 
+#include <GeographicLib/Geodesic.hpp>
 #include "CoreMinimal.h"
 

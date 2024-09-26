@@ -57,6 +57,10 @@
 		{
 			"Name": "PCG",
 			"Enabled": true
+		},
+		{
+			"Name": "CMakeTarget",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
