@@ -1,17 +1,9 @@
 #pragma once
 
+#include "RoveCommManifestWrapper.h"
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "RoveCommPacketWrapper.generated.h"
-
-// Declare the enum globally using UENUM macro
-UENUM(BlueprintType)
-enum class ERoveDataType : uint8
-{
-    Float   UMETA(DisplayName = "Float"),
-    Int32   UMETA(DisplayName = "Int32"),
-    Double  UMETA(DisplayName = "Double")
-};
 
 // Blueprint-friendly wrapper for RoveCommPacket
 UCLASS(BlueprintType)
@@ -27,7 +19,7 @@ public:
     int32 DataCount;
 
     UPROPERTY(BlueprintReadWrite, Category = "RoveComm Packet")
-    ERoveDataType DataType;
+    EManifestDataType DataType;
 
     UPROPERTY(BlueprintReadWrite, Category = "RoveComm Packet")
     TArray<float> FloatData;
@@ -49,7 +41,7 @@ public:
 
     // Function to set the data type
     UFUNCTION(BlueprintCallable, Category = "RoveComm Packet")
-    void SetDataType(ERoveDataType NewDataType)
+    void SetDataType(EManifestDataType NewDataType)
     {
         DataType = NewDataType;
     }
@@ -58,7 +50,7 @@ public:
     UFUNCTION(BlueprintCallable, Category = "RoveComm Packet")
     void AddFloatData(float Value)
     {
-        if (DataType == ERoveDataType::Float)
+        if (DataType == EManifestDataType::FLOAT)
         {
             FloatData.Add(Value);
             DataCount = FloatData.Num();
@@ -68,7 +60,7 @@ public:
     UFUNCTION(BlueprintCallable, Category = "RoveComm Packet")
     void AddIntData(int32 Value)
     {
-        if (DataType == ERoveDataType::Int32)
+        if (DataType == EManifestDataType::INT32)
         {
             IntData.Add(Value);
             DataCount = IntData.Num();
@@ -78,7 +70,7 @@ public:
     UFUNCTION(BlueprintCallable, Category = "RoveComm Packet")
     void AddDoubleData(double Value)
     {
-        if (DataType == ERoveDataType::Double)
+        if (DataType == EManifestDataType::DOUBLE)
         {
             DoubleData.Add(Value);
             DataCount = DoubleData.Num();

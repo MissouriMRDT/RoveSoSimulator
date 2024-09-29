@@ -38,7 +38,7 @@ bool URoveCommUDPWrapper::SendPacket(URoveCommPacketWrapper* Packet, const FStri
         // Switch based on the data type of the packet
         switch (Packet->DataType)
         {
-            case ERoveDataType::Float:
+            case EManifestDataType::FLOAT:
             {
                 rovecomm::RoveCommPacket<float> stPacket;
                 stPacket.unDataId = Packet->DataId;
@@ -48,7 +48,7 @@ bool URoveCommUDPWrapper::SendPacket(URoveCommPacketWrapper* Packet, const FStri
                 ssize_t Result = RoveCommUDPInstance->SendUDPPacket(stPacket, IPAddressStd.c_str(), Port);
                 return (Result != -1);
             }
-            case ERoveDataType::Int32:
+            case EManifestDataType::INT32:
             {
                 rovecomm::RoveCommPacket<int32> stPacket;
                 stPacket.unDataId = Packet->DataId;
@@ -58,7 +58,7 @@ bool URoveCommUDPWrapper::SendPacket(URoveCommPacketWrapper* Packet, const FStri
                 ssize_t Result = RoveCommUDPInstance->SendUDPPacket(stPacket, IPAddressStd.c_str(), Port);
                 return (Result != -1);
             }
-            case ERoveDataType::Double:
+            case EManifestDataType::DOUBLE:
             {
                 rovecomm::RoveCommPacket<double> stPacket;
                 stPacket.unDataId = Packet->DataId;
