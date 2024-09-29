@@ -61,6 +61,10 @@
 		{
 			"Name": "CMakeTarget",
 			"Enabled": true
+		},
+		{
+			"Name": "StudioTelemetry",
+			"Enabled": false
 		}
 	],
 	"TargetPlatforms": [
