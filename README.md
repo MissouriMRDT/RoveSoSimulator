@@ -107,6 +107,15 @@ Make sure you have the following installed:
 - [Unreal Engine 5](https://www.unrealengine.com/)
 - [Autonomy Software](https://github.com/MissouriMRDT/Autonomy_Software/)
 
+#### Windows Dependencies:
+
+#### Linux Dependencies:
+    In order to build the project with RoveComm_CPP, you will need to install the clang compiler and libc++ standard.
+    ```
+    sudo apt update
+    sudo apt install libc++-dev libc++abi-dev clang 
+    ```
+
 ### 3️⃣ **Run the Simulation**
 To start the simulator, follow these steps:
 
