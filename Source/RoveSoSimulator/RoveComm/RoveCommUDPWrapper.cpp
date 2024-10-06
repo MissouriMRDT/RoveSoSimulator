@@ -6,6 +6,10 @@ URoveCommUDPWrapper::URoveCommUDPWrapper()
 {
     // Instantiate the RoveCommUDP instance
     RoveCommUDPInstance = new rovecomm::RoveCommUDP();
+
+    // Initialize DrivePowers and LEDPanelRGBColors
+    DrivePowers.Init(0.0f, 2);
+    LEDPanelRGBColors.Init(0, 3);
 }
 
 // Destructor
@@ -24,7 +28,14 @@ bool URoveCommUDPWrapper::InitUDPSocket(int32 Port)
 {
     if (RoveCommUDPInstance)
     {
-        return RoveCommUDPInstance->InitUDPSocket(Port);
+        // Init RoveCommUDP socket.
+        bool bInitialized = RoveCommUDPInstance->InitUDPSocket(Port);
+        // Add the callback functions.
+        RoveCommUDPInstance->AddUDPCallback(ProcessDriveData, manifest::Core::COMMANDS.find("DRIVELEFTRIGHT")->second.DATA_ID);
+        RoveCommUDPInstance->AddUDPCallback(ProcessRGBData, manifest::Core::COMMANDS.find("LEFRGB")->second.DATA_ID);
+        RoveCommUDPInstance->AddUDPCallback(ProcessStateDisplayData, manifest::Core::COMMANDS.find("STATEDISPLAY")->second.DATA_ID);
+
+        return bInitialized;
     }
     return false;
 }
@@ -84,4 +95,23 @@ void URoveCommUDPWrapper::CloseUDPSocket()
     {
         RoveCommUDPInstance->CloseUDPSocket();
     }
+}
+
+// Getter methods for RoveComm data with shared lock and deep copy using FMemory::Memcpy.
+TArray<float> URoveCommUDPWrapper::GetDrivePowersCopy()
+{
+    std::shared_lock<std::shared_mutex> lock(DrivePowersMutex);
+    TArray<float> DeepCopy;
+    DeepCopy.AddUninitialized(DrivePowers.Num());
+    FMemory::Memcpy(DeepCopy.GetData(), DrivePowers.GetData(), DrivePowers.Num() * sizeof(float));
+    return DeepCopy;
+}
+
+TArray<uint8> URoveCommUDPWrapper::GetLEDPanelRGBColorsCopy()
+{
+    std::shared_lock<std::shared_mutex> lock(LEDPanelRGBColorsMutex);
+    TArray<uint8> DeepCopy;
+    DeepCopy.AddUninitialized(LEDPanelRGBColors.Num());
+    FMemory::Memcpy(DeepCopy.GetData(), LEDPanelRGBColors.GetData(), LEDPanelRGBColors.Num() * sizeof(uint8));
+    return DeepCopy;
 }

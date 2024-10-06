@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RoveCommManifestWrapper.h"
+#include "RoveCommPacket.h"
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "RoveCommPacketWrapper.generated.h"
