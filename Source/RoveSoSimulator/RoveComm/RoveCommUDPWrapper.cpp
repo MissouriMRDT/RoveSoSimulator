@@ -21,6 +21,7 @@ URoveCommUDPWrapper::~URoveCommUDPWrapper()
         RoveCommUDPInstance->CloseUDPSocket();
         delete RoveCommUDPInstance;
         RoveCommUDPInstance = nullptr;
+        this->ConditionalBeginDestroy();
     }
 }
 
