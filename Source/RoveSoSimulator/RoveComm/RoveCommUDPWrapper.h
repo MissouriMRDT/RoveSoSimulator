@@ -45,9 +45,12 @@ public:
     // Getter methods with shared lock
     UFUNCTION(BlueprintCallable, Category = "RoveComm UDP")
     TArray<float> GetDrivePowersCopy();
-
     UFUNCTION(BlueprintCallable, Category = "RoveComm UDP")
     TArray<uint8> GetLEDPanelRGBColorsCopy();
+
+    // Getter method for RoveComm FPS.
+    UFUNCTION(BlueprintCallable, Category = "RoveComm UDP")
+    int32 GetRoveCommFPS();
 
     // Delegates.
     UPROPERTY(BlueprintAssignable, Category = "RoveComm UDP")

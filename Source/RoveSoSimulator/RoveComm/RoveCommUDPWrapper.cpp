@@ -116,3 +116,13 @@ TArray<uint8> URoveCommUDPWrapper::GetLEDPanelRGBColorsCopy()
     FMemory::Memcpy(DeepCopy.GetData(), LEDPanelRGBColors.GetData(), LEDPanelRGBColors.Num() * sizeof(uint8));
     return DeepCopy;
 }
+
+// Getter methods for RoveComm FPS.
+int32 URoveCommUDPWrapper::GetRoveCommFPS()
+{
+    if (RoveCommUDPInstance)
+    {
+        return static_cast<int32>(RoveCommUDPInstance->GetIPS().GetExactIPS());
+    }
+    return 0;
+}
