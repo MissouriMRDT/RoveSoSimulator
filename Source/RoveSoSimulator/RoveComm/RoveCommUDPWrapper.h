@@ -120,8 +120,21 @@ private:
             // Not using this.
             (void) stdAddr;
 
-            // Trigger the OnLEDPanelDataReceived event.
-            // OnLEDPanelDataReceived.Broadcast();
+            // Lock the mutex.
+            std::unique_lock<std::shared_mutex> Lock(LEDPanelRGBColorsMutex);
+
+            // Clear the LED panel colors.
+            LEDPanelRGBColors.Empty();
+            // Store the first three indexes from vData in the LEDPanelRGBColors.
+            LEDPanelRGBColors.Add(stPacket.vData[0]);
+            LEDPanelRGBColors.Add(stPacket.vData[1]);
+            LEDPanelRGBColors.Add(stPacket.vData[2]);
+
+            // Trigger the OnLEDPanelDataReceived event on the game thread.
+            AsyncTask(ENamedThreads::GameThread, [this]()
+            {
+                OnLEDPanelDataReceived.Broadcast();
+            });
         };
         
         /******************************************************************************
@@ -137,35 +150,47 @@ private:
             // Not using this.
             (void) stdAddr;
 
-            // // Determine display state.
-            // switch (stPacket.vData[0])
-            // {
-            //     case 0:
-            //     {
-            //         // Teleop Blue
-                    
-            //         break;
-            //     }
-            //     case 1:
-            //     {
-            //         // Autonomy Red
-                    
-            //         break;
-            //     }
-            //     case 2:
-            //     {
-            //         // Goal Green
-                    
-            //         break;
-            //     }
-            //     default:
-            //         break;
-            // }
+            // Determine display state.
+            switch (stPacket.vData[0])
+            {
+                case 0:
+                {
+                    // Teleop Blue
+                    std::unique_lock<std::shared_mutex> Lock(LEDPanelRGBColorsMutex);
+                    LEDPanelRGBColors.Empty();
+                    LEDPanelRGBColors.Add(0);
+                    LEDPanelRGBColors.Add(0);
+                    LEDPanelRGBColors.Add(255); // RGB for Blue
+                    break;
+                }
+                case 1:
+                {
+                    // Autonomy Red
+                    std::unique_lock<std::shared_mutex> Lock(LEDPanelRGBColorsMutex);
+                    LEDPanelRGBColors.Empty();
+                    LEDPanelRGBColors.Add(255);
+                    LEDPanelRGBColors.Add(0);
+                    LEDPanelRGBColors.Add(0); // RGB for Red
+                    break;
+                }
+                case 2:
+                {
+                    // Goal Green
+                    std::unique_lock<std::shared_mutex> Lock(LEDPanelRGBColorsMutex);
+                    LEDPanelRGBColors.Empty();
+                    LEDPanelRGBColors.Add(0);
+                    LEDPanelRGBColors.Add(255);
+                    LEDPanelRGBColors.Add(0); // RGB for Green
+                    break;
+                }
+                default:
+                    break;
+            }
 
             // Trigger the OnLEDPanelDataReceived event on the game thread.
-            // AsyncTask(ENamedThreads::GameThread, [this]()
-            // {
-            //     OnLEDPanelDataReceived.Broadcast();
-            // });
+            AsyncTask(ENamedThreads::GameThread, [this]()
+            {
+                OnLEDPanelDataReceived.Broadcast();
+            });
         };
 };

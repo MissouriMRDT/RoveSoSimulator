@@ -33,7 +33,7 @@ bool URoveCommUDPWrapper::InitUDPSocket(int32 Port)
         bool bInitialized = RoveCommUDPInstance->InitUDPSocket(Port);
         // Add the callback functions.
         RoveCommUDPInstance->AddUDPCallback(ProcessDriveData, manifest::Core::COMMANDS.find("DRIVELEFTRIGHT")->second.DATA_ID);
-        RoveCommUDPInstance->AddUDPCallback(ProcessRGBData, manifest::Core::COMMANDS.find("LEFRGB")->second.DATA_ID);
+        RoveCommUDPInstance->AddUDPCallback(ProcessRGBData, manifest::Core::COMMANDS.find("LEDRGB")->second.DATA_ID);
         RoveCommUDPInstance->AddUDPCallback(ProcessStateDisplayData, manifest::Core::COMMANDS.find("STATEDISPLAY")->second.DATA_ID);
 
         return bInitialized;
