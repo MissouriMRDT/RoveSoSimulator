@@ -47,6 +47,10 @@ bool URoveCommManifestWrapper::GetCommandDetails(const FString& BoardName, const
     {
         commands = &manifest::Nav::COMMANDS;
     }
+    else if (BoardName.Equals("Autonomy", ESearchCase::IgnoreCase))
+    {
+        commands = &manifest::Autonomy::COMMANDS;
+    }
 
     if (commands)
     {

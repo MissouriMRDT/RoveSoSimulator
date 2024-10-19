@@ -60,6 +60,16 @@ bool URoveCommUDPWrapper::SendPacket(URoveCommPacketWrapper* Packet, const FStri
                 ssize_t Result = RoveCommUDPInstance->SendUDPPacket(stPacket, IPAddressStd.c_str(), Port);
                 return (Result != -1);
             }
+            case EManifestDataType::UINT8:
+            {
+                rovecomm::RoveCommPacket<uint8> stPacket;
+                stPacket.unDataId = Packet->DataId;
+                stPacket.unDataCount = Packet->DataCount;
+                stPacket.eDataType = manifest::DataTypes::UINT8_T;
+                stPacket.vData = std::vector<uint8>(Packet->Uint8Data.GetData(), Packet->Uint8Data.GetData() + Packet->Uint8Data.Num());
+                ssize_t Result = RoveCommUDPInstance->SendUDPPacket(stPacket, IPAddressStd.c_str(), Port);
+                return (Result != -1);
+            }
             case EManifestDataType::INT32:
             {
                 rovecomm::RoveCommPacket<int32> stPacket;
@@ -103,6 +113,12 @@ TArray<float> URoveCommUDPWrapper::GetDrivePowersCopy()
 {
     std::shared_lock<std::shared_mutex> lock(DrivePowersMutex);
     TArray<float> DeepCopy;
+    // Check if DrivePowers is empty. If is empty, return a TArray with 0.0f, 0.0f.
+    if (DrivePowers.Num() == 0)
+    {
+        DeepCopy.Init(0.0f, 2);
+        return DeepCopy;
+    }
     DeepCopy.AddUninitialized(DrivePowers.Num());
     FMemory::Memcpy(DeepCopy.GetData(), DrivePowers.GetData(), DrivePowers.Num() * sizeof(float));
     return DeepCopy;
@@ -112,6 +128,12 @@ TArray<uint8> URoveCommUDPWrapper::GetLEDPanelRGBColorsCopy()
 {
     std::shared_lock<std::shared_mutex> lock(LEDPanelRGBColorsMutex);
     TArray<uint8> DeepCopy;
+    // Check if LEDPanelRGBColors is empty. If is empty, return a TArray with 0, 0, 0.
+    if (LEDPanelRGBColors.Num() == 0)
+    {
+        DeepCopy.Init(0, 3);
+        return DeepCopy;
+    }
     DeepCopy.AddUninitialized(LEDPanelRGBColors.Num());
     FMemory::Memcpy(DeepCopy.GetData(), LEDPanelRGBColors.GetData(), LEDPanelRGBColors.Num() * sizeof(uint8));
     return DeepCopy;

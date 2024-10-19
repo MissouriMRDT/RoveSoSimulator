@@ -29,6 +29,9 @@ public:
     TArray<int32> IntData;
 
     UPROPERTY(BlueprintReadWrite, Category = "RoveComm Packet")
+    TArray<uint8> Uint8Data;
+
+    UPROPERTY(BlueprintReadWrite, Category = "RoveComm Packet")
     TArray<double> DoubleData;
 
     // Blueprint-exposed function to clear the data
@@ -37,6 +40,7 @@ public:
     {
         FloatData.Empty();
         IntData.Empty();
+        Uint8Data.Empty();
         DoubleData.Empty();
     }
 
@@ -65,6 +69,16 @@ public:
         {
             IntData.Add(Value);
             DataCount = IntData.Num();
+        }
+    }
+
+    UFUNCTION(BlueprintCallable, Category = "RoveComm Packet")
+    void AddUint8Data(uint8 Value)
+    {
+        if (DataType == EManifestDataType::UINT8)
+        {
+            Uint8Data.Add(Value);
+            DataCount = Uint8Data.Num();
         }
     }
 
