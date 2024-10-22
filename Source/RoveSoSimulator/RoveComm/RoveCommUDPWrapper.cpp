@@ -18,10 +18,10 @@ URoveCommUDPWrapper::~URoveCommUDPWrapper()
     // Cleanup the RoveCommUDP instance
     if (RoveCommUDPInstance)
     {
-        RoveCommUDPInstance->CloseUDPSocket();
+        // RoveCommUDPInstance->CloseUDPSocket();
+        // Destroy the RoveCommUDP instance.
         delete RoveCommUDPInstance;
         RoveCommUDPInstance = nullptr;
-        this->ConditionalBeginDestroy();
     }
 }
 
@@ -104,6 +104,7 @@ void URoveCommUDPWrapper::CloseUDPSocket()
 {
     if (RoveCommUDPInstance)
     {
+        // Close the RoveCommUDP socket.
         RoveCommUDPInstance->CloseUDPSocket();
     }
 }
