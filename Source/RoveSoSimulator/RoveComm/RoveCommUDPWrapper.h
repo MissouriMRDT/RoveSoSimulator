@@ -4,6 +4,7 @@
 #include <shared_mutex>
 #include "RoveCommPacketWrapper.h"
 #include "UObject/NoExportTypes.h"
+#include "Async/Async.h"
 #include "RoveCommUDPWrapper.generated.h"
 
 // Forward declaration of your RoveCommUDP class from the RoveComm library
@@ -98,6 +99,9 @@ private:
                 // Add the new drive powers.
                 DrivePowers.Add(stPacket.vData[0]);
                 DrivePowers.Add(stPacket.vData[1]);
+
+                // Unlock the mutex.
+                Lock.unlock();
             }
 
             // Trigger the OnDriveDataReceived event on the game thread.
@@ -130,6 +134,9 @@ private:
             LEDPanelRGBColors.Add(stPacket.vData[1]);
             LEDPanelRGBColors.Add(stPacket.vData[2]);
 
+            // Unlock the mutex.
+            Lock.unlock();
+
             // Trigger the OnLEDPanelDataReceived event on the game thread.
             AsyncTask(ENamedThreads::GameThread, [this]()
             {
@@ -161,6 +168,8 @@ private:
                     LEDPanelRGBColors.Add(0);
                     LEDPanelRGBColors.Add(0);
                     LEDPanelRGBColors.Add(255); // RGB for Blue
+                    // Unlock the mutex.
+                    Lock.unlock();
                     break;
                 }
                 case 1:
@@ -171,6 +180,8 @@ private:
                     LEDPanelRGBColors.Add(255);
                     LEDPanelRGBColors.Add(0);
                     LEDPanelRGBColors.Add(0); // RGB for Red
+                    // Unlock the mutex.
+                    Lock.unlock();
                     break;
                 }
                 case 2:
@@ -181,6 +192,8 @@ private:
                     LEDPanelRGBColors.Add(0);
                     LEDPanelRGBColors.Add(255);
                     LEDPanelRGBColors.Add(0); // RGB for Green
+                    // Unlock the mutex.
+                    Lock.unlock();
                     break;
                 }
                 default:
