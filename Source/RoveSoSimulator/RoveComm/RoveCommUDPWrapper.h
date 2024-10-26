@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include <shared_mutex>
+#include <functional>
 #include "RoveCommPacketWrapper.h"
 #include "UObject/NoExportTypes.h"
 #include "Async/Async.h"

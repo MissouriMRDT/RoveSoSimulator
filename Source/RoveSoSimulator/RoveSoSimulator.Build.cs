@@ -33,6 +33,7 @@ public class RoveSoSimulator : ModuleRules
         {
             // RoveComm_CPP
             PublicDefinitions.Add("BS_THREAD_POOL_ENABLE_PAUSE=1");
+            PublicDefinitions.Add("__ROVECOMM_WINDOWS_MODE__=1");
             CMakeTarget.add(Target, this, "RoveComm_CPP", Path.Combine(this.ModuleDirectory, "../ThirdParty/RoveComm_CPP"), "-DBUILD_WIN=ON -D__ROVECOMM_LIBRARY_MODE__=0 -DBUILD_TESTS_MODE=OFF", true);
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
