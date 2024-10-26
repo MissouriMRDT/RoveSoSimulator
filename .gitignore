@@ -3,6 +3,9 @@
 
 # Asset directories.
 
+# I hate windows.
+Thumbs.db
+
 # Secrets.
 Secrets/
 
