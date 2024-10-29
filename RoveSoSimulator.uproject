@@ -8,6 +8,11 @@
 			"Name": "RoveSoSimulator",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+		"Name": "CustomShaders",
+		"Type": "Runtime",
+		"LoadingPhase": "PostConfigInit"
 		}
 	],
 	"Plugins": [

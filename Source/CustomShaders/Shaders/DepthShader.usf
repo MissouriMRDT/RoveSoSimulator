@@ -1,0 +1,25 @@
+// DepthShader.usf
+
+#include "/Engine/Public/Platform.ush"
+
+RWBuffer<float> OutputBuffer : register(u0);  // Output to a structured buffer
+Texture2D<float> InputTexture : register(t0); // Input texture remains unchanged
+
+[numthreads(16, 16, 1)]
+void MainCS(uint3 DTid : SV_DispatchThreadID)
+{
+    // Get texture dimensions
+    uint width, height;
+    InputTexture.GetDimensions(width, height);
+
+    // Ensure we are within bounds
+    if (DTid.x < width && DTid.y < height)
+    {
+        float depthValue = InputTexture.Load(int3(DTid.xy, 0)); // Load depth value from texture
+        uint bufferWidth;
+        OutputBuffer.GetDimensions(bufferWidth); // Get buffer width
+
+        // Calculate the 1D index for the buffer based on the 2D thread ID
+        OutputBuffer[DTid.x + (DTid.y * bufferWidth)] = depthValue;
+    }
+}

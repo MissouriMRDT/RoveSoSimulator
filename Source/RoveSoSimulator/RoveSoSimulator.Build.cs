@@ -16,7 +16,7 @@ public class RoveSoSimulator : ModuleRules
             "Core",
             "CoreUObject",
             "Engine",
-            "InputCore",
+            "InputCore"
         });
 
         // Configure Unreal Build Tool.
