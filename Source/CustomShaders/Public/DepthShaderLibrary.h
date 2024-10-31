@@ -20,5 +20,5 @@ public:
      * @return - True if the data was successfully retrieved, false otherwise.
      */
     UFUNCTION(BlueprintCallable, Category = "Render Target")
-    static bool GetRenderTargetDepthData(UTextureRenderTarget2D* RenderTarget, TArray<uint8>& OutByteArray);
+    static bool GetRenderTargetData(UTextureRenderTarget2D* RenderTarget, TArray<uint8>& OutByteArray);
 };

@@ -27,12 +27,7 @@ class FDepthReadCS : public FGlobalShader
 
 IMPLEMENT_SHADER_TYPE(, FDepthReadCS, TEXT("/CustomShaders/DepthShader.usf"), TEXT("MainCS"), SF_Compute);
 
-void UDepthShaderLibrary::ExecuteDepthShader(UTextureRenderTarget2D* InputRenderTarget, TArray<uint8>& OutData)
-{
-    
-}
-
-bool UDepthShaderLibrary::GetRenderTargetDepthData(UTextureRenderTarget2D* RenderTarget, TArray<uint8>& OutByteArray)
+bool UDepthShaderLibrary::GetRenderTargetData(UTextureRenderTarget2D* RenderTarget, TArray<uint8>& OutByteArray)
 {
     if (!RenderTarget)
     {
