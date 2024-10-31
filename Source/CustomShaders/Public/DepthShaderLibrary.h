@@ -14,10 +14,11 @@ class CUSTOMSHADERS_API UDepthShaderLibrary : public UBlueprintFunctionLibrary
 
 public:
     /**
-     * Executes a compute shader to read depth data from an input render target and serialize it to a byte array.
-     * @param InputRenderTarget - The render target containing depth data.
-     * @param OutData - The byte array to which the shader will write serialized depth data.
+     * Blueprint Callable Function to get depth data from a render target as a byte array.
+     * @param RenderTarget - The Render Target to read data from.
+     * @param OutByteArray - Output byte array of depth data.
+     * @return - True if the data was successfully retrieved, false otherwise.
      */
-    UFUNCTION(BlueprintCallable, Category = "Rendering")
-    static void ExecuteDepthShader(UTextureRenderTarget2D* InputRenderTarget, TArray<uint8>& OutData);
+    UFUNCTION(BlueprintCallable, Category = "Render Target")
+    static bool GetRenderTargetDepthData(UTextureRenderTarget2D* RenderTarget, TArray<uint8>& OutByteArray);
 };

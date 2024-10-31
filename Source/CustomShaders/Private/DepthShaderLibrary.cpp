@@ -1,5 +1,6 @@
 #include "DepthShaderLibrary.h"
 #include "Engine/TextureRenderTarget2D.h"
+#include "Kismet/KismetRenderingLibrary.h"
 #include "RHICommandList.h"
 #include "ShaderParameterUtils.h"
 #include "RenderGraphUtils.h"
@@ -9,7 +10,8 @@
 #include "RenderGraphBuilder.h"
 #include "RHIStaticStates.h"
 #include "RHIUtilities.h"
-#include "RHIGPUReadback.h" // Include this header for FRHIGPUBufferReadback
+#include "RHIGPUReadback.h"
+#include "RHI.h"
 
 // Define the compute shader class
 class FDepthReadCS : public FGlobalShader
@@ -23,67 +25,49 @@ class FDepthReadCS : public FGlobalShader
     END_SHADER_PARAMETER_STRUCT()
 };
 
-// Register the shader with the engine
 IMPLEMENT_SHADER_TYPE(, FDepthReadCS, TEXT("/CustomShaders/DepthShader.usf"), TEXT("MainCS"), SF_Compute);
 
 void UDepthShaderLibrary::ExecuteDepthShader(UTextureRenderTarget2D* InputRenderTarget, TArray<uint8>& OutData)
 {
-    if (!InputRenderTarget)
+    
+}
+
+bool UDepthShaderLibrary::GetRenderTargetDepthData(UTextureRenderTarget2D* RenderTarget, TArray<uint8>& OutByteArray)
+{
+    if (!RenderTarget)
     {
-        UE_LOG(LogTemp, Warning, TEXT("ExecuteDepthShader: Invalid render target provided"));
-        return;
+        UE_LOG(LogTemp, Warning, TEXT("RenderTarget is null"));
+        return false;
     }
 
-    // Ensure the render target resource is accessed within the game thread
-    FTextureRenderTargetResource* RenderTargetResource = InputRenderTarget->GameThread_GetRenderTargetResource();
-    FTexture2DRHIRef InputTextureRHI = RenderTargetResource->TextureRHI;
+    // Get the render target resource
+    FTextureRenderTargetResource* RenderTargetResource = RenderTarget->GameThread_GetRenderTargetResource();
+    if (!RenderTargetResource)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("RenderTarget resource is null"));
+        return false;
+    }
 
-    // Enqueue the render command
-    ENQUEUE_RENDER_COMMAND(CaptureCommand)(
-        [InputTextureRHI, &OutData](FRHICommandListImmediate& RHICmdList)
-        {
-            // Initialize the Render Graph
-            FRDGBuilder GraphBuilder(RHICmdList);
+    // Read the depth data as an array of FFloat16Color
+    TArray<FFloat16Color> DepthData;
+    RenderTargetResource->ReadFloat16Pixels(DepthData);
 
-            // Convert the RHI texture to RDG texture for the Render Graph
-            FRDGTextureRef InputTexture = GraphBuilder.RegisterExternalTexture(CreateRenderTarget(InputTextureRHI, TEXT("InputTexture")));
+    // Clear the output byte array
+    OutByteArray.Empty();
 
-            // Create an RDG buffer for the output
-            FRDGBufferRef OutputBuffer = GraphBuilder.CreateBuffer(FRDGBufferDesc::CreateBufferDesc(sizeof(float), 1280 * 720), TEXT("OutputBuffer"));
-            FRDGBufferUAVRef OutputBufferUAV = GraphBuilder.CreateUAV(OutputBuffer);
+    // Reserve enough space in the byte array (4 bytes per pixel)
+    OutByteArray.Reserve(DepthData.Num() * sizeof(float));
 
-            // Set up shader parameters
-            FDepthReadCS::FParameters* PassParameters = GraphBuilder.AllocParameters<FDepthReadCS::FParameters>();
-            PassParameters->InputTexture = InputTexture;
-            PassParameters->OutputBuffer = OutputBufferUAV;
+    // Convert depth data to a byte array
+    for (const FFloat16Color& Pixel : DepthData)
+    {
+        // Depth is typically stored in the red channel when Capture Source is set to Scene Depth
+        float DepthValue = Pixel.R;
 
-            // Bind and dispatch the compute shader
-            TShaderMapRef<FDepthReadCS> ComputeShader(GetGlobalShaderMap(GMaxRHIFeatureLevel));
-            
-            const int32 GroupSizeX = FMath::DivideAndRoundUp(1280, 16);
-            const int32 GroupSizeY = FMath::DivideAndRoundUp(720, 16);
-            FComputeShaderUtils::AddPass(GraphBuilder, RDG_EVENT_NAME("ExecuteDepthShader"), ComputeShader, PassParameters, FIntVector(GroupSizeX, GroupSizeY, 1));
+        // Convert float to byte array (4 bytes)
+        uint8* DepthBytes = reinterpret_cast<uint8*>(&DepthValue);
+        OutByteArray.Append(DepthBytes, sizeof(float));
+    }
 
-            // Execute the Render Graph
-            GraphBuilder.Execute();
-
-            // Read back the data from the GPU
-            FRHIGPUBufferReadback ReadbackBuffer(TEXT("DepthReadback"));
-            ReadbackBuffer.EnqueueCopy(RHICmdList, OutputBuffer->GetRHI());
-
-            // Wait for the GPU to finish the readback
-            RHICmdList.SubmitCommandsAndFlushGPU();
-            RHICmdList.BlockUntilGPUIdle();
-
-            // Map the readback buffer and copy the data
-            void* BufferData = ReadbackBuffer.Lock(1280 * 720 * sizeof(float));
-            TArray<float> DepthData;
-            DepthData.SetNumUninitialized(1280 * 720);
-            FMemory::Memcpy(DepthData.GetData(), BufferData, 1280 * 720 * sizeof(float));
-            ReadbackBuffer.Unlock();
-
-            // Serialize the data to a byte array
-            OutData.SetNumUninitialized(DepthData.Num() * sizeof(float));
-            FMemory::Memcpy(OutData.GetData(), DepthData.GetData(), OutData.Num());
-        });
+    return true;
 }
