@@ -10,9 +10,9 @@
 			"LoadingPhase": "Default"
 		},
 		{
-		"Name": "CustomShaders",
-		"Type": "Runtime",
-		"LoadingPhase": "PostConfigInit"
+			"Name": "CustomShaders",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit"
 		}
 	],
 	"Plugins": [
@@ -86,6 +86,24 @@
 		{
 			"Name": "MovieRenderPipeline",
 			"Enabled": true
+		},
+		{
+			"Name": "LidarPointCloud",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Mac",
+				"Linux"
+			]
+		},
+		{
+			"Name": "Fab",
+			"Enabled": false,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Mac",
+				"Linux"
+			]
 		}
 	],
 	"TargetPlatforms": [
