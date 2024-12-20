@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.4",
+	"EngineAssociation": "5.5",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -8,11 +8,6 @@
 			"Name": "RoveSoSimulator",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
-		},
-		{
-			"Name": "CustomShaders",
-			"Type": "Runtime",
-			"LoadingPhase": "PostConfigInit"
 		}
 	],
 	"Plugins": [
@@ -70,10 +65,6 @@
 		{
 			"Name": "StudioTelemetry",
 			"Enabled": false
-		},
-		{
-			"Name": "OpenCV",
-			"Enabled": true
 		},
 		{
 			"Name": "PixelStreaming",

@@ -26,7 +26,7 @@ print_help() {
 # Set all default variables (e.g. # Name and version of ps-infra that we are downloading)
 PSInfraOrg=EpicGamesExt
 PSInfraRepo=PixelStreamingInfrastructure
-PSInfraTagOrBranch=UE5.4
+PSInfraTagOrBranch=UE5.5
 RefType=heads
 IsTag=0
 ReleaseUrlBase=https://github.com/EpicGamesExt/PixelStreamingInfrastructure/releases/download
@@ -86,12 +86,17 @@ then
     PSInfraTagOrBranch=UE5.4
     IsTag=0
   fi
+  if [ "$UEVersion" = "5.5" ]
+  then
+    PSInfraTagOrBranch=UE5.5
+    IsTag=0
+  fi
 fi
 
 # If no arguments select a specific version, fetch the appropriate default
 if [ -z "$PSInfraTagOrBranch" ]
 then
-  PSInfraTagOrBranch=UE5.4
+  PSInfraTagOrBranch=UE5.5
   IsTag=0
 fi
 echo "Tag or branch: $PSInfraTagOrBranch"

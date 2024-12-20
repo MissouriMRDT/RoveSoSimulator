@@ -1,0 +1,12 @@
+/Intermediate
+/Saved
+/.vscode
+/Content
+/Samples
+/.git
+/Plugins/UDP-Unreal/Intermediate
+/Plugins/UDP-Unreal/Content
+/Plugins/UE4CMake/Intermediate
+/Plugins/UE4CMake/Content
+/Plugins/UE4CMake/.git
+/Plugins/SocketIOClient/Intermediate
