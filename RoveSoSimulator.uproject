@@ -103,6 +103,17 @@
 		{
 			"Name": "NiagaraFluids",
 			"Enabled": true
+		},
+		{
+			"Name": "CircularDependenciesDetector",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/698a2106995e41cb934ada3bb0088a5f"
 		}
+	],
+	"TargetPlatforms": [
+		"Android",
+		"Linux",
+		"Windows",
+		"LinuxArm64"
 	]
 }
