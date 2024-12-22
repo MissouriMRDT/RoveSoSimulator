@@ -35,12 +35,11 @@ timeout /t 5 /nobreak >nul
 
 REM Step 8: Start the game
 cd ..\..\..\..
-set /p GAME_URL=Enter the game URL [default: ws://127.0.0.1:80]: 
-if "%GAME_URL%"=="" set GAME_URL=ws://127.0.0.1:80
+set GAME_URL=ws://127.0.0.1:80
 
 if exist "%GAME_EXECUTABLE%" (
     echo Starting game with URL %GAME_URL%...
-    start "Game" %GAME_EXECUTABLE% %GAME_URL%
+    start "Game" %GAME_EXECUTABLE% -PixelStreamingURL="%GAME_URL%" -PixelStreamingHudStats=true -PixelStreamingWebRTCFps=30 -PixelStreamingWebRTCStartBitrate=10000000 -PixelStreamingWebRTCDisableFrameDropper=true -PixelStreamingWebRTCVideoPacingMaxDelay=20 -PixelStreamingEncoderMaxQP=12
 ) else (
     echo Game executable not found: %GAME_EXECUTABLE%
     exit /b 1
