@@ -39,7 +39,7 @@ set GAME_URL=ws://127.0.0.1:80
 
 if exist "%GAME_EXECUTABLE%" (
     echo Starting game with URL %GAME_URL%...
-    start "Game" %GAME_EXECUTABLE% -PixelStreamingURL="%GAME_URL%" -PixelStreamingHudStats=true -PixelStreamingHudStats=true -PixelStreamingWebRTCDisableFrameDropper=true -PixelStreamingWebRTCVideoPacingMaxDelay=50
+    start "Game" %GAME_EXECUTABLE% -PixelStreamingURL="%GAME_URL%" -PixelStreamingHudStats=false -PixelStreamingWebRTCDisableFrameDropper=true -PixelStreamingWebRTCVideoPacingMaxDelay=50
 ) else (
     echo Game executable not found: %GAME_EXECUTABLE%
     exit /b 1
