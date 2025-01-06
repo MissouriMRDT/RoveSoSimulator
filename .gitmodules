@@ -7,9 +7,3 @@
 [submodule "Source/ThirdParty/RoveComm_CPP"]
 	path = Source/ThirdParty/RoveComm_CPP
 	url = git@github.com:MissouriMRDT/RoveComm_CPP.git
-[submodule "Plugins/SocketIOClient"]
-	path = Plugins/SocketIOClient
-	url = git@github.com:getnamo/SocketIOClient-Unreal.git
-[submodule "Plugins/UDP-Unreal"]
-	path = Plugins/UDP-Unreal
-	url = git@github.com:getnamo/UDP-Unreal.git

@@ -6,18 +6,22 @@
 # I hate windows.
 Thumbs.db
 
+# I hate .vscode
+.vscode/
+
 # Secrets.
 Secrets/
 
 # Export directories.
 Export/
 
-#Don't push saved folder.
+#Don't push build generated folders.
 Saved/
 Intermediate/
-Build/
 Binaries/
 DerivedDataCache/
+Build/
+Samples/
 
 ### C++ ###
 # Prerequisites

@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.4",
+	"EngineAssociation": "5.5",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -8,11 +8,6 @@
 			"Name": "RoveSoSimulator",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
-		},
-		{
-			"Name": "CustomShaders",
-			"Type": "Runtime",
-			"LoadingPhase": "PostConfigInit"
 		}
 	],
 	"Plugins": [
@@ -72,10 +67,6 @@
 			"Enabled": false
 		},
 		{
-			"Name": "OpenCV",
-			"Enabled": true
-		},
-		{
 			"Name": "PixelStreaming",
 			"Enabled": true
 		},
@@ -104,6 +95,19 @@
 				"Mac",
 				"Linux"
 			]
+		},
+		{
+			"Name": "VirtualCamera",
+			"Enabled": true
+		},
+		{
+			"Name": "NiagaraFluids",
+			"Enabled": true
+		},
+		{
+			"Name": "CircularDependenciesDetector",
+			"Enabled": false,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/698a2106995e41cb934ada3bb0088a5f"
 		}
 	],
 	"TargetPlatforms": [
