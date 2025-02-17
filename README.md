@@ -89,23 +89,14 @@ The simulation is fully customizable. Add new environments, tweak sensor configu
 
 ## 🎮 How to Get Started
 
-### 1️⃣ **Clone the Repository**
-
-```bash
-git clone --recurse-submodules https://github.com/MissouriMRDT/RoveSoSimulator.git
-cd RoveSoSimulator
-```
-
-The `Content` directory in this project is a submodule that links to our self-hosted OneDev instance for unlimited Git LFS storage. Please be aware that the server has a 1000GB monthly bandwidth limit. Large pushes should be carefully considered as exceeding this limit WILL incur additional costs.
-
-You can access the OneDev repository for the `Content` directory here: [Content Repository](https://onedev.craysoftware.com/Content/~files). **The `Content` directory is very large, so expect a 2-3 hour initial clone time.** If you are unable to access the OneDev website please reach out to our software leads for assistance with gaining access to the server.
-
-
-### 2️⃣ **Install Prerequisites**
+### 1️⃣ **Install Prerequisites**
 Make sure you have the following installed:
 
 - [Unreal Engine 5](https://www.unrealengine.com/)
 - [Autonomy Software](https://github.com/MissouriMRDT/Autonomy_Software/)
+- [Git](https://git-scm.com/downloads)
+- [CMake](https://cmake.org/download/)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 
 #### Windows Dependencies:
 
@@ -116,14 +107,28 @@ Make sure you have the following installed:
     sudo apt install libc++-dev libc++abi-dev clang 
     ```
 
-### 3️⃣ **Run the Simulation**
+### 2️⃣ **Clone the Repository**
+
+Next you will want to install `Diversion` here: [Diversion](https://www.diversion.dev/). Create an account with whatever email you want to use, and install Diversion following the instructions for your OS. After you have created an account, message the Simulation Lead on Discord that you would like to help contribute as well as your email, and we will get you added to the repository.
+
+Once you are added to the repo, you will want to clone it onto your machine. It is over 40GB, so it may take some time to be fully downloaded on your machine. After it is cloned, you will want to install the `Diversion Unreal Engine Plugin` found here: [Unreal Plugin](https://docs.diversion.dev/unreal/unreal-engine-plugin). Follow the instructions and add the plugin to UE.
+
+After everything is downloaded, you should be able to open `RoveSoSimulator` on your install of Unreal Engine. 
+
+
+### 3️⃣ **Troubleshooting** 
+
+Before moving on to running the simulation, however, you need to ensure that there are no errors when opening the sim. If you do encounter an error, you can see the source of it in your local folders at `RoveSoSimulator/Saved/Logs/RoveSoSimulator.log`. If you have any errors related to `RoveComm`, it can be often fixed by going to `RoveSoSimulator/Source/ThirdParty/`, deleting the `RoveComm_CPP` folder, and recloning it in the `/ThirdParty` using `git clone --recurse-submodules https://github.com/MissouriMRDT/RoveComm_CPP.git`. If you encounter further issues, let the Simulation Lead know, and we can take a look into the problem.
+
+
+### 4️⃣ **Run the Simulation**
 To start the simulator, follow these steps:
 
 - Open the project in **Unreal Engine 5**.
 - Configure the simulation parameters in the settings panel.
 - Press the **Play** button to initiate the simulation.
 
-### 4️⃣ **Logging & Data Analysis**
+### 5️⃣ **Logging & Data Analysis**
 Results and logs can be found in the `/logs` directory. To analyze data, refer to the provided scripts in the `/analysis` folder.
 
 ## 📖 Documentation
