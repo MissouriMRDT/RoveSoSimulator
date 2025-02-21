@@ -95,7 +95,7 @@ Make sure you have the following installed:
 - [Unreal Engine 5](https://www.unrealengine.com/)
 - [Autonomy Software](https://github.com/MissouriMRDT/Autonomy_Software/)
 - [Git](https://git-scm.com/downloads)
-- [CMake](https://cmake.org/download/)
+- [CMake](https://cmake.org/download/) (You may need to restart your computer after downloading CMake for it to properly work.)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 
 #### Windows Dependencies:
@@ -118,7 +118,7 @@ After everything is downloaded, you should be able to open `RoveSoSimulator` on 
 
 ### 3️⃣ **Troubleshooting** 
 
-Before moving on to running the simulation, however, you need to ensure that there are no errors when opening the sim. If you do encounter an error, you can see the source of it in your local folders at `RoveSoSimulator/Saved/Logs/RoveSoSimulator.log`. If you have any errors related to `RoveComm`, it can be often fixed by going to `RoveSoSimulator/Source/ThirdParty/`, deleting the `RoveComm_CPP` folder, and recloning it in the `/ThirdParty` using `git clone --recurse-submodules https://github.com/MissouriMRDT/RoveComm_CPP.git`. If you encounter further issues, let the Simulation Lead know, and we can take a look into the problem.
+Before moving on to running the simulation, however, you need to ensure that there are no errors when opening the sim. If you do encounter an error, you can see the source of it in your local folders at `RoveSoSimulator/Saved/Logs/RoveSoSimulator.log`. If you have any errors related to `RoveComm`, it can be often fixed by going to `RoveSoSimulator/Source/ThirdParty/`, deleting the `RoveComm_CPP` folder, and recloning it in the `/ThirdParty` folder using `git clone --recurse-submodules https://github.com/MissouriMRDT/RoveComm_CPP.git`. If you encounter further issues, let the Simulation Lead know, and we can take a look into the problem.
 
 
 ### 4️⃣ **Run the Simulation**
