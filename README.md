@@ -123,7 +123,7 @@ Make sure you have the following installed:
 
 ### 4️⃣ **Setting up Sim Mode on Autonomy_Software**
 
-- Now that you are able to open and run the simulator, you'll need to be able run the Autonomy codebase inside of it. After you have initially followed all the steps to clone Autonomy_Software (see above in Pre Reqs) you will have to configure a few things. First, navigate to `src/AutonomyConstants.h`. Find the line that initializes `const std::string SIM_IP_ADDRESS` and set the IP to your own IP. You will also want to go into `CMakeLists.txt` and on the line that has `option(BUILD_SIM_MODE "Enable Simulation Mode" OFF)` change OFF to ON.
+- Now that you are able to open and run the simulator, you'll need to be able run the Autonomy codebase inside of it. After you have initially followed all the steps to clone Autonomy_Software (see above in Pre Reqs) you will have to configure a few things. First, navigate to `src/AutonomyConstants.h`. Find the line that initializes `const std::string SIM_IP_ADDRESS` and set the IP to your own IP. You can find your IP by entering `ipconfig` into your terminal if you are on Windows and `ifconfig` on Linux. We utilize IPv4. You will also want to go into `CMakeLists.txt` and on the line that has `option(BUILD_SIM_MODE "Enable Simulation Mode" OFF)` change OFF to ON.
   
 - Next, if you are running Windows, you will need to modify your .wslconfig file. In your File Explorer (or whatever you use to browse your files), go to C:/Users/<Your_User> and create a new file called `.wslconfig`, if you have not yet modified it before. Open it up and write `networkingMode=mirrored`. Save and close the file.
   
@@ -145,7 +145,7 @@ To start the simulator, follow these steps:
 You should now be able to play it normally! To run autonomy, follow the steps  below:
 
 - Open up the project in Unreal and click the 'play' button.
-- Ensure that it successfully initialized RoveCommUDP. After that, go back into VSCode and run `./Autonomy_Software`.
+- Ensure that it successfully initialized RoveCommUDP. After that, go back into VSCode and run `./Autonomy_Software_Sim`.
 - Go back into Unreal, and in the game, press 'B' on your keyboard to open up the Basestation menu. This will allow us to send waypoints and start autonomy. After sending a waypoint and clicking on 'Start Autonomy', the back panel of the rover should turn red and it should start autonomously navigating.
 
 If you encounter any issues, let the Simulation Lead know!
