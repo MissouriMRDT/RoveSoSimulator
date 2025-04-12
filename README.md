@@ -125,7 +125,7 @@ Make sure you have the following installed:
 
 - Now that you are able to open and run the simulator, you'll need to be able run the Autonomy codebase inside of it. After you have initially followed all the steps to clone Autonomy_Software (see above in Pre Reqs) you will have to configure a few things. First, navigate to `src/AutonomyConstants.h`. Find the line that initializes `const std::string SIM_IP_ADDRESS` and set the IP to your own IP. You can find your IP by entering `ipconfig` into your terminal if you are on Windows and `ifconfig` on Linux. We utilize IPv4. You will also want to go into `CMakeLists.txt` and on the line that has `option(BUILD_SIM_MODE "Enable Simulation Mode" OFF)` change OFF to ON.
   
-- Next, if you are running Windows, you will need to modify your .wslconfig file. In your File Explorer (or whatever you use to browse your files), go to C:/Users/<Your_User> and create a new file called `.wslconfig`, if you have not yet modified it before. Open it up and write `networkingMode=mirrored`. Save and close the file.
+- Next, if you are running Windows, you will need to modify your .wslconfig file. In your File Explorer (or whatever you use to browse your files), go to C:/Users/<Your_User> and create a new file called `.wslconfig`, if you have not yet modified it before. Open it up and write `networkingMode=mirrored`. Save and close the file, then restart your machine so that the changes are made.
   
 - Lastly, go back into Autonomy_Software in VSCode and follow these steps:
 1. Delete the `build` directory.
