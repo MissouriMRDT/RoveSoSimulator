@@ -145,7 +145,7 @@ To start the simulator, follow these steps:
 You should now be able to play it normally! To run autonomy, follow the steps  below:
 
 - Open up the project in Unreal and click the 'play' button.
-- Ensure that it successfully initialized RoveCommUDP. After that, go back into VSCode and run `./Autonomy_Software`.
+- Ensure that it successfully initialized RoveCommUDP. After that, go back into VSCode and run `./Autonomy_Software_Sim`.
 - Go back into Unreal, and in the game, press 'B' on your keyboard to open up the Basestation menu. This will allow us to send waypoints and start autonomy. After sending a waypoint and clicking on 'Start Autonomy', the back panel of the rover should turn red and it should start autonomously navigating.
 
 If you encounter any issues, let the Simulation Lead know!
