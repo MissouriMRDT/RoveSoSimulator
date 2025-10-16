@@ -17,17 +17,17 @@
 
 #### Linux Dependencies:
 
-Assistance for Linux Setup: [Setup on Linux](RoveSoSimulator/linux-setup)
+Assistance for Linux Setup: [Setup on Linux](linux-setup)
 
 - [Dotnet SDK](https://learn.microsoft.com/en-us/dotnet/core/install/linux)
 - clang and libc++
 
-  In order to build the project with RoveComm_CPP, you will need to install the clang compiler and libc++ standard. If you are on a Debian-based system the following bash commands should install them:
-  ```bash
-  sudo apt update
-  sudo apt install libc++-dev libc++abi-dev clang 
-  ```
-  
+	In order to build the project with RoveComm_CPP, you will need to install the clang compiler and libc++ standard. If you are on a Debian-based system the following bash commands should install them:
+	```bash
+	sudo apt update
+	sudo apt install libc++-dev libc++abi-dev clang 
+	```
+	
 
 ### 2️⃣ **Clone the Repository**
 
@@ -35,7 +35,7 @@ Assistance for Linux Setup: [Setup on Linux](RoveSoSimulator/linux-setup)
 
 - Once you are added to the repo, you will want to clone it onto your machine. It is over 40GB, so it may take some time to be fully downloaded on your machine.
 
-- After it is cloned, you will want to install the `Diversion Unreal Engine Plugin` found here: [Unreal Plugin](https://docs.diversion.dev/unreal/unreal-engine-plugin). If you are on Windows, follow the instructions on the plugin's website to download and add the plugin to UE. If you are on Linux please proceed to this page: [Setup on Linux](RoveSoSimulator/linux-setup#getting-the-diversion-plugin)
+- After it is cloned, you will want to install the `Diversion Unreal Engine Plugin` found here: [Unreal Plugin](https://docs.diversion.dev/unreal/unreal-engine-plugin). If you are on Windows, follow the instructions on the plugin's website to download and add the plugin to UE. If you are on Linux please proceed to this page: [Setup on Linux](linux-setup#getting-the-diversion-plugin)
 
 - After everything is downloaded, you should be able to open `RoveSoSimulator` on your install of Unreal Engine. 
 
@@ -48,9 +48,9 @@ Assistance for Linux Setup: [Setup on Linux](RoveSoSimulator/linux-setup)
 
 - Now that you are able to open and run the simulator, you'll need to be able run the Autonomy codebase inside of it. After you have initially followed all the steps to clone Autonomy_Software (see above in Pre Reqs) you will have to configure a few things. First, navigate to `src/AutonomyConstants.cpp`. Find the line that initializes `const std::string SIM_IP_ADDRESS` and set the IP to your own IP. You can find your IP by entering `ipconfig` into your terminal if you are on Windows and `ifconfig` on Linux. We utilize IPv4. If you are on Windows, the IP you should plug in will typically start with 192.168.x.x and will be listed with a default gateway, and on Linux, the IP the adapter will be named something like eth0 or wlan0.
 -  You will also want to go into `CMakeLists.txt` and on the line that has `option(BUILD_SIM_MODE "Enable Simulation Mode" OFF)` change OFF to ON.
-  
+	
 - Next, if you are running Windows, you will need to modify your .wslconfig file. In your File Explorer (or whatever you use to browse your files), go to C:/Users/<Your_User> and create a new file called `.wslconfig`, if you have not yet modified it before. Open it up and write `networkingMode=mirrored`. Save and close the file, then restart your machine so that the changes are made.
-  
+	
 - Lastly, go back into Autonomy_Software in VSCode and follow these steps:
 1. Delete the `build` directory.
 2. Open up a new terminal.
@@ -65,7 +65,7 @@ To start the simulator, follow these steps:
 - Open the project in **Unreal Engine 5**.
 - Configure the simulation parameters in the settings panel.
 - Press the **Play** button to initiate the simulation.
-  
+	
 You should now be able to play it normally! To run autonomy, follow the steps  below:
 
 - Open up the project in Unreal and click the 'play' button.
