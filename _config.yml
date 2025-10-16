@@ -7,19 +7,19 @@ color-scheme: "auto-default-dark"
 logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
 navigation: [
   {
-    url: RoveSoSimulator/,
-    name: Home
+    url: "RoveSoSimulator/",
+    name: "Home"
   },
   {
-    url: RoveSoSimulator/setup,
-    name: Getting Started
+    url: "RoveSoSimulator/setup",
+    name: "Getting Started"
   },
   {
-    url: RoveSoSimulator/linux-setup,
-    name: Linux Setup Help
+    url: "RoveSoSimulator/linux-setup",
+    name: "Linux Setup Help"
   },
   {
-    url: RoveSoSimulator/documentation,
-    name: Documentation
+    url: "RoveSoSimulator/documentation",
+    name: "Documentation"
   }
 ]

@@ -19,23 +19,23 @@ The **RoveSoSimulator** empowers developers and engineers on the Mars Rover Desi
 
 ## 🛠️ Features
 
-### 🌍 **Realistic Martian Environment**
-Experience high-fidelity Martian terrain designed to mimic the conditions your rover will encounter on the actual red planet. From craters to sand dunes, this simulator provides a dynamic testing environment to ensure your autonomy software is prepared for anything.
+- 🌍 **Realistic Martian Environment**
+  Experience high-fidelity Martian terrain designed to mimic the conditions your rover will encounter on the actual red planet. From craters to sand dunes, this simulator provides a dynamic testing environment to ensure your autonomy software is prepared for anything.
 
-### 🎥 **Stereoscopic Camera**
-RoveSoSimulator includes a set of cameras, which outputs both a stereoscopic feed and depth map. This feature enables in-depth testing of the rover's visual navigation capabilities.
+- 🎥 **Stereoscopic Camera**
+  RoveSoSimulator includes a set of cameras, which outputs both a stereoscopic feed and depth map. This feature enables in-depth testing of the rover's visual navigation capabilities.
 
-### 📡 **Sensor Integration**
-Incorporate a variety of sensors into the simulator to test the rover's response to its environment. Simulated LIDAR, IMU, GPS, and other critical sensors are supported.
+- 📡 **Sensor Integration**
+  Incorporate a variety of sensors into the simulator to test the rover's response to its environment. Simulated LIDAR, IMU, GPS, and other critical sensors are supported.
 
-### 🛤️ **Pathfinding & Navigation Testing**
-Test pathfinding algorithms with obstacles and varied terrains. Measure performance, optimize efficiency, and stress-test the rover’s ability to navigate autonomously in difficult scenarios.
+- 🛤️ **Pathfinding & Navigation Testing**
+  Test pathfinding algorithms with obstacles and varied terrains. Measure performance, optimize efficiency, and stress-test the rover’s ability to navigate autonomously in difficult scenarios.
 
-### 📈 **Data Logging**
-Log critical metrics, such as sensor readings, navigation decisions, and performance benchmarks, for post-simulation analysis.
+- 📈 **Data Logging**
+  Log critical metrics, such as sensor readings, navigation decisions, and performance benchmarks, for post-simulation analysis.
 
-### 🔄 **Customization & Expandability**
-The simulation is fully customizable. Add new environments, tweak sensor configurations, or even modify the physics engine to reflect new experimental conditions.
+- 🔄 **Customization & Expandability**
+  The simulation is fully customizable. Add new environments, tweak sensor configurations, or even modify the physics engine to reflect new experimental conditions.
 
 ## 📜 License
 

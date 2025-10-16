@@ -48,14 +48,12 @@
         </ul>
         {% endif %}
 
-				{% if site.navigation %}
 				<br/>
 				<ul>
 					{% for navitem in site.navigation %}
 						<li><strong><a href="{{ navitem.url }}">{{ navitem.name }}</a></strong></li>
 					{% endfor %}
 				</ul>
-				{% endif %}
       </header>
       <section>
 
