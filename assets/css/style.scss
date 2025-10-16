@@ -7,6 +7,20 @@ section {
   width:calc(100% - 360px);
 }
 
+@media print, screen and (max-width: 960px) {
+  section {
+   width: 100%;
+  }
+  
+  header {
+    padding-right: 0px;
+  }
+  
+  header ul {
+    position: static;
+  }
+}
+
 .wrapper {
   width:clamp(860px, calc(100%), 1160px);
 }
