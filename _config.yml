@@ -10,13 +10,13 @@ navigation:
     link: "/"
     name: "Home"
   -
-    link: "/setup"
+    link: "/setup.html"
     name: "Getting Started"
   -  
-    link: "/linux-setup"
+    link: "/linux-setup.html"
     name: "Linux Setup Help"
   -  
-    link: "/documentation"
+    link: "/documentation.html"
     name: "Documentation"
 defaults:
   -
