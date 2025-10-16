@@ -24,7 +24,7 @@ The simplest solution to getting the plugin will be to ask another team member t
 
 ## Build Failure Due to RoveComm_CPP
 
-See [Troubleshooting Cloning](/#3️⃣-troubleshooting-cloning)
+See [Troubleshooting Cloning](index.html#3️⃣-troubleshooting-cloning)
 
 ## Build Failure Due to Missing "PlatformFilemanager.h"
 
