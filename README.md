@@ -90,28 +90,41 @@ The simulation is fully customizable. Add new environments, tweak sensor configu
 ## 🎮 How to Get Started
 
 ### 1️⃣ **Install Prerequisites**
-Make sure you have the following installed:
+#### Universal Dependencies:
 
 - [Unreal Engine 5](https://www.unrealengine.com/)
-- [Autonomy Software](https://github.com/MissouriMRDT/Autonomy_Software/)
 - [Git](https://git-scm.com/downloads)
 - [CMake](https://cmake.org/download/) (You may need to restart your computer after downloading CMake for it to properly work.)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+
+#### If Using Autonomy:
+
+- [Autonomy Software](https://github.com/MissouriMRDT/Autonomy_Software/)
 
 #### Windows Dependencies:
 
+- [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+
 #### Linux Dependencies:
-    In order to build the project with RoveComm_CPP, you will need to install the clang compiler and libc++ standard.
-    ```
-    sudo apt update
-    sudo apt install libc++-dev libc++abi-dev clang 
-    ```
+
+Assistance for Linux Setup: [Setup on Linux](/linux-setup)
+
+- [Dotnet SDK](https://learn.microsoft.com/en-us/dotnet/core/install/linux)
+- clang and libc++
+
+  In order to build the project with RoveComm_CPP, you will need to install the clang compiler and libc++ standard. If you are on a Debian-based system the following bash commands should install them:
+  ```bash
+  sudo apt update
+  sudo apt install libc++-dev libc++abi-dev clang 
+  ```
+  
 
 ### 2️⃣ **Clone the Repository**
 
 - Next you will want to install `Diversion` here: [Diversion](https://www.diversion.dev/). Create an account with whatever email you want to use, and install Diversion following the instructions for your OS. After you have created an account, message the Simulation Lead on Discord that you would like to help contribute as well as your email, and we will get you added to the repository.
 
-- Once you are added to the repo, you will want to clone it onto your machine. It is over 40GB, so it may take some time to be fully downloaded on your machine. After it is cloned, you will want to install the `Diversion Unreal Engine Plugin` found here: [Unreal Plugin](https://docs.diversion.dev/unreal/unreal-engine-plugin). Follow the instructions and add the plugin to UE.
+- Once you are added to the repo, you will want to clone it onto your machine. It is over 40GB, so it may take some time to be fully downloaded on your machine.
+
+- After it is cloned, you will want to install the `Diversion Unreal Engine Plugin` found here: [Unreal Plugin](https://docs.diversion.dev/unreal/unreal-engine-plugin). If you are on Windows, follow the instructions on the plugin's website to download and add the plugin to UE. If you are on Linux please proceed to this page: [Setup on Linux](/linux-setup#getting-the-diversion-plugin)
 
 - After everything is downloaded, you should be able to open `RoveSoSimulator` on your install of Unreal Engine. 
 
@@ -119,7 +132,6 @@ Make sure you have the following installed:
 ### 3️⃣ **Troubleshooting Cloning** 
 
 - Before moving on to running the simulation, however, you need to ensure that there are no errors when opening the sim. If you do encounter an error, you can see the source of it in your local folders at `RoveSoSimulator/Saved/Logs/RoveSoSimulator.log`. If you have any errors related to `RoveComm`, it can be often fixed by going to `RoveSoSimulator/Source/ThirdParty/`, deleting the `RoveComm_CPP` folder, and recloning it in the `/ThirdParty` folder using `git clone --recurse-submodules https://github.com/MissouriMRDT/RoveComm_CPP.git`. If you encounter further issues, let the Simulation Lead know, and we can take a look into the problem.
-
 
 ### 4️⃣ **Setting up Sim Mode on Autonomy_Software**
 

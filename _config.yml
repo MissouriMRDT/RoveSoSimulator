@@ -1,5 +1,5 @@
-title: RoveSoSimulator - S&T MRDT
-description: Autonomous Testing Simulator in Unreal Engine 5 for the MS&T Mars Rover Design Team
+title: RoveSoSimulator
+description: Autonomous Rover Testing Simulator in Unreal Engine 5
 remote_theme: "godalming123/minimal"
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
