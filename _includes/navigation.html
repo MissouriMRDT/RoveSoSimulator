@@ -1,6 +1,11 @@
 <ul>
-	<li><a href="missourimrdt.github.io/RoveSoSimulator/">Home</a></li>
-	<li><a href="missourimrdt.github.io/RoveSoSimulator/setup">Getting Started</a></li>
-	<li><a href="missourimrdt.github.io/RoveSoSimulator/linux-setup">Linux Setup Help</a></li>
-	<li><a href="missourimrdt.github.io/RoveSoSimulator/documentation">Documentation</a></li>
+	{% for item in site.navigation %}
+		<li>
+			{% if page.url == item.link %}
+				<strong>{{ item.name }}</strong>
+			{% else %}
+				<a href="{{ item.link }}">{{ item.name }}</a>
+			{% endif %}
+		</li>
+  {% endfor %}
 </ul>

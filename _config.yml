@@ -5,6 +5,19 @@ plugins:
 - jekyll-remote-theme
 color-scheme: "auto-default-dark"
 logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
+navigation:
+  -
+    link: "missourimrdt.github.io/RoveSoSimulator/"
+    name: "Home"
+  -
+    link: "missourimrdt.github.io/RoveSoSimulator/setup"
+    name: "Getting Started"
+  -  
+    link: "missourimrdt.github.io/RoveSoSimulator/linux-setup"
+    name: "Linux Setup Help"
+  -  
+    link: "missourimrdt.github.io/RoveSoSimulator/documentation"
+    name: "Documentation"
 defaults:
   -
     scope:
