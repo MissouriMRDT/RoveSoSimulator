@@ -5,3 +5,9 @@ plugins:
 - jekyll-remote-theme
 color-scheme: "auto-default-dark"
 logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
