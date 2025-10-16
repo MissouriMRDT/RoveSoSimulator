@@ -1,7 +1,7 @@
 <ul>
 	{% for item in site.navigation %}
 		<li>
-			{% if page.url == item.link %}
+			{% if page.url == item.link or page.url == {{item.link | append: ".html" }} %}
 				<strong>{{ item.name }}</strong>
 			{% else %}
 				<a href="/RoveSoSimulator{{ item.link }}">{{ item.name }}</a>
