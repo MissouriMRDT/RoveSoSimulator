@@ -1,0 +1,12 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+section {
+  width:calc(100% - 360px);
+}
+
+.wrapper {
+  width:clamp(860px, calc(100%), 1160px);
+}
