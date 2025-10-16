@@ -7,16 +7,16 @@ color-scheme: "auto-default-dark"
 logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
 navigation:
   -
-    link: "missourimrdt.github.io/RoveSoSimulator/"
+    link: "/"
     name: "Home"
   -
-    link: "missourimrdt.github.io/RoveSoSimulator/setup"
+    link: "/setup"
     name: "Getting Started"
   -  
-    link: "missourimrdt.github.io/RoveSoSimulator/linux-setup"
+    link: "/linux-setup"
     name: "Linux Setup Help"
   -  
-    link: "missourimrdt.github.io/RoveSoSimulator/documentation"
+    link: "/documentation"
     name: "Documentation"
 defaults:
   -
