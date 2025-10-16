@@ -1,6 +1,7 @@
 <ul>
 	{% for item in site.navigation %}
 		<li>
+			{{ page.url }}
 			{% if page.url == item.link or page.url == {{item.link | append: ".html" }} %}
 				<strong>{{ item.name }}</strong>
 			{% else %}
