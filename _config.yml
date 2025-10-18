@@ -2,25 +2,22 @@ title: RoveSoSimulator
 description: Autonomous Rover Testing Simulator in Unreal Engine 5
 remote_theme: "godalming123/minimal"
 plugins:
-- jekyll-remote-theme
+  - jekyll-remote-theme
 color-scheme: "auto-default-dark"
 logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
 navigation:
-  -
-    link: "/"
+  - link: "/pages/index.html"
     name: "Home"
-  -
-    link: "/setup.html"
+  - link: "/pages/setup.html"
     name: "Getting Started"
-  -  
-    link: "/linux-setup.html"
+  - link: "/pages/linux-setup.html"
     name: "Linux Setup Help"
-  -  
-    link: "/documentation.html"
+  - link: "/pages/documentation.html"
     name: "Documentation"
+  - link: "/pages/diversion.html"
+    name: "Diversion"
 defaults:
-  -
-    scope:
+  - scope:
       path: "" # an empty string here means all files in the project
     values:
       layout: "default"
