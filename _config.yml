@@ -16,6 +16,10 @@ navigation:
     name: "Documentation"
   - link: "/pages/diversion.html"
     name: "Diversion"
+  - link: "/pages/importing-rover.html"
+    name: "Importing Rover"
+  - link: "/pages/lidar-point-cloud-generation-system.html"
+    name: "Lidar Point Cloud Generation System"
 defaults:
   - scope:
       path: "" # an empty string here means all files in the project

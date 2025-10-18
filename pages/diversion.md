@@ -18,7 +18,7 @@ This tutorial will walk you through the essential features of the Diversion desk
 
 When you first open Diversion, you will see the main hub. This is your starting point for accessing all your projects.
 
-*   **Local Workspaces:** This section shows repositories that you already have on your computer. You can quickly open a project from here. In the image, you can see the `RoveSoSimulator` workspace, its current branch (`import-Table-from-main`), and the local file path. The **Sync** toggle allows you to enable or disable automatic syncing of changes.
+*   **Local Workspaces:** This section shows repositories that you already have on your computer. You can quickly open a project from here. The **Sync** toggle allows you to enable or disable automatic syncing of changes.
 *   **All Repositories:** This lists all repositories available to you from your organization. If you are setting up the simulator for the first time, you would find `RoveSoSimulator` here and click **Clone Repo** to download it to your machine.
 
 ![Diversion Hub](../assets/images/Screenshot%202025-10-17%20172857.png)
