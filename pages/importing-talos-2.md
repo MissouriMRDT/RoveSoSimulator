@@ -36,11 +36,47 @@ Either way, the skeleton will need to be altered. Weirdly enough, this is done i
     + ...you can move it in the viewport, which can be much easier than using the values under "Details." As per previous and a future statement, they do not *yet* need to be exact, but you can use the specific transform value to make it exact if necessary.
     + The names of bones can also be changed here; don't unless you are prepared for possibly a lot more work.
 
-### Weight Painting
+If you are wondering what your actually doing--- you likely need to just either recreate the skeleton on a new rover, or move the bones that they fit the new rover.
 
-Weight painting is the process of 
+### Weight Painting
+(This is the *long* part)
+Weight painting is the process of assigning vertices to bones, which makes it so the vertices move when the corrisponding bone moves. The "weight" is how much a bone influnces a vertex (vertice?), out of one; a vertex can have weights from several different bones to, say, move to directly in between all of them. For this project, you should only need weight paint values of one and zero. 
+
+I used, in the skin section of the toolbox, "edit weights" to assign weights. Other methods may be possible or even better, but I will only cover this one. In "edit weights," I used the weight editing modes Mesh and Bones only, as these are for more precise control.
++ Use bones mode to control what bone you are changing the influenced vertices of (which bone you are working on).
+  + You may also be able to use the skeleton tree on the right.
+  + Remember what the colors of bones mean.
++ Use mesh mode to select vertices and assign them weight.
+  + select by clicking or making a box. Note that making a box will highlight "through;" that is, you will select vertices behind the ones you can see as well
+  + use the flood button under "edit selection" to extend your vertice(s) selection to what is connected to them and connected to them and so on. Good for getting, say, the entire wheel piece from just one initial vertex on the wheel
+  + Selecting can be kinda buggy at small levels. However, if you know where the vertices already have weight (by default the root/top bone in heirarchy), you can select all affected vertices, and then click "Isolate selected" (just above "flood"), which will make it so you can only see those vertices. This is useful because...
+  + ...selected vertices stay selected when you switch bones! Very nice, though you need to make sure you reset your selected every so often, otherwise you could reassign something again by accident.
+
+##### Some things...don't matter.
+As of now (Oct. 2025), only the wheels and in some ways the root actually move. Basically, The wheels go up and down, and everything else tilts forward and backward as one thing. Because of this, it ***currently*** doesn't matter how the MSI and arms/legs/wheel connector thing-a-ma-jigs are weight painted, since those bones are frozen in place.
+
+This may be changed in the future, but it would require some extra details to make the bones actually connect to the wheels and such.
+
+### DONE???
+
+Are the bones in the right place? Do the weights of bones look reasonable? If you question your work, know that you can absolutely fix it later---and the rest of this tutorial together might be equal in length to this weight painting journey. 
 
 ## Physics Asset
+
+Right click on skele mesh -> create -> physics asset -> "Create and assign"; "Create" should also work, since you should be able to assign it later if you don't, but I'm not sure where you actually assign it, so good luck if you choose that method. 
+
+As with most things, mimic Talos/Hyperions' physic bodies; 6 spheres for the wheels, a box for the center piece, unspecific capsules for the MSIs, and more specific capsules for the legs/arms/thing-a-ma-jiggits.
+**See the final bullet point in the below section if scaling seems like it doesn't work**
+### Doing that
+
+Position and Scale added bodies to match the rover, similar to how it was done in the tutorial.
+
+The tutorial covers this quite well, and the defaults for many things also align with the rover. I have a few notes, however.
++ If you click on a physics body (be careful not to click the colored sphere), at the bottom left in a tab called "graph," you should see a set of connected bodys.
++ I do not completely understand this, but the green boxes are the physic bodies, one of which is the one you have selected, and the others are the kind of the parent or children of the physic body (actually the physic bodys of the bone-parent/children of the current physic body's bone. Weird, right?)
++ The yellow boxes are the constraints. I understand these even less, but the key note is this; you need to lock all the axiis of the MSI and knuckles and legs/arms/yada-yada-yada.
+  + You may have seen **annoying red and green spheres** that you can actually select instead of the physic bodies. These (in some way) represent the constraints. I believe you can also click on them and lock all of their axiis, accomplishing what is *probably* the same thing. ( Right side -> Details -> angular limits -> Swing 1 motion, Swing 2 motion, Twist Motion -> lock'em )
+    + This was an extremely annoying issue to find and fix. Figured out some good strategies though, which I will mention later.
 
 ## Control Rig
 
