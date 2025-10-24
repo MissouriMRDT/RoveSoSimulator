@@ -23,17 +23,18 @@ The next step was to remake Hyperion's skeleton, which may not be necessary for 
 Either way, the skeleton will need to be altered. Weirdly enough, this is done in the skeleton mesh asset window rather than the skeleton asset itself; so open up the skeleton **mesh.**
 
 + At the top right of the tab, you should see a skeleton and a body made of triangles. These can be clicked to switch between your skeleton and skeleton mesh, respectively.
- + The animation blueprint and Physics asset should also appear here **when you add them in.** This may be based on you created them from the mesh, or possibly from the blueprint.
+  + The animation blueprint and Physics asset should also appear here **when you add them in.** This may be based on you created them from the mesh, or possibly from the blueprint.
 + On the left side of the screen (should be in mesh tab), there is a toolbox tab. The skeleton section can be used to edit the skeleton.
- + If you don't see the toolbox, there should be an "Editing tools" button at the top of the screen, middle, same row as skeleton and skeley mesh buttons.
- + For bone changes; keep in mind you need to press accept to press accept for them to fully save, and that clicking cancel can quite quickly undo your work (hazard; be careful not to *accidentally* press this button.
- + For selecting bones; the point-circle sphere things are the bones. Yellow is the path to its parent (in the heirarchy), and green is to its children. The red is a displacement from the origin or similar; only matters for the root bone.
- + Next to "Edit," where you start in, is the "Add" section, which adds bones (wow!). You shouldn't need this if you can copy paste, but if you can't...
-  + while in add, click *precisely* on the bone you want to be its parent. Remember previous point about what the colors mean.
-  + from there, click where you want the new bone to be. This system sucks, so use the section (in "Add") "Details" -> "Transform" -> "Location" values to move it precisely. It dones not have to be exact, or at least this Talos and Hyperion were not; see notes later, likely under weight painting.
-  +  You can change its name in the details panel as well. The current names on both Talos and Hyperion are terrible, but this may be modified in the future. Stick to the naming sceme on Talos/Hyperion. If you don't, you may be able to change the bone names in the final blueprint and get away with it---untested as of yet, no promises.
- + If you are editing the skeleton, you can move it in the viewport, which can be much easier than using the values under "Details." As per previous and a future statement, they do not *yet* need to be exact, but you can use the specific transform value to make it exact if necessary.
- + The names of bones can also be changed here; don't unless you are prepared for possibly a lot more work.
+  + If you don't see the toolbox, there should be an "Editing tools" button at the top of the screen, middle, same row as skeleton and skeley mesh buttons.
+  + For bone changes; keep in mind you need to press accept to press accept for them to fully save, and that clicking cancel can quite quickly undo your work (hazard; be careful not to *accidentally* press this button.
+  + For selecting bones; the point-circle sphere things are the bones. Yellow is the path to its parent (in the heirarchy), and green is to its children. The red is a displacement from the origin or similar; only matters for the root bone.
+  + Next to "Edit," where you start in, is the "Add" section, which adds bones (wow!). You shouldn't need this if you can copy paste, but if you can't...
+    + while in add, click *precisely* on the bone you want to be its parent. Remember previous point about what the colors mean.
+    + from there, click where you want the new bone to be. This system sucks, so use the section (in "Add") "Details" -> "Transform" -> "Location" values to move it precisely. It dones not have to be exact, or at least this Talos and Hyperion were not; see notes later, likely under weight painting.
+    +  You can change its name in the details panel as well. The current names on both Talos and Hyperion are terrible, but this may be modified in the future. Stick to the naming sceme on Talos/Hyperion. If you don't, you may be able to change the bone names in the final blueprint and get away with it---untested as of yet, no promises.
+  + If you are editing the skeleton...
+    + ...you can move it in the viewport, which can be much easier than using the values under "Details." As per previous and a future statement, they do not *yet* need to be exact, but you can use the specific transform value to make it exact if necessary.
+    + The names of bones can also be changed here; don't unless you are prepared for possibly a lot more work.
 
 ### Weight Painting
 
