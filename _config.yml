@@ -19,7 +19,7 @@ navigation:
   - link: "/pages/importing-rover.html"
     name: "Importing Rover"
   - link: "/pages/importing-talos-2.html"
-    name: "Importing Talos Alt"
+    name: "Importing Talos - 2"
   - link: "/pages/lidar-point-cloud-generation-system.html"
     name: "Lidar Point Cloud Generation System"
 defaults:
