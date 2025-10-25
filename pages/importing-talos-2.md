@@ -98,6 +98,7 @@ If the tutorial tells you to assign something, you should be good to assign it. 
   + This may be altered in the future, since the rover is electic.
 + Don't add controls, enable simulate physics, add it to the world, etc.; move to the next step. The tutorial will resume on Animation Blueprint (directly after blueprint).
 *note; there may be some other things in the blueprint that the video has not gotten to yet that need to be swapped out. See future sections.* 
+
 ### The Controls
 
 You can see some of this...somewhere in the nodes, but it is far more useful to follow
@@ -144,10 +145,12 @@ Many of the assets between the rovers, at least for Hyperion and Talos, could be
 + Packing all of the materials into a folder affected nothing.
 + Moving the specific rover folder into a new set of rovers folder did not affect anything
  + Unreal's references allow you to select from all applicatable options; e.g. changing a material offers only materials. This is likely part of the reason the file changes don't cause problems. There are upsides to using a UI-thing.
+
 #### Copy, paste, delete
 + Copying files and other things can be chaotic in unreal. If you want to duplicate something though, the way is simple---if unintuitive. Just try to move it by dragging the file where you want the copy, and Unreal will prompt you with whether you want to copy or move it there.
  + Fun Fact! Unreal 5.6 does not support importing Uasset files --- what it saves many files as in its projects! There may be a technical reason, but I still hate it. 
 + If you can't delete something from the right-click menu, try pressing the delete or backspace key. 
  + If that doesn't work, try to find an editor or similar where you can add more of whatever you want to destoy. If you can create it, you should be able to destroy it.  
+
 #### Windows/Content Browser
 Don't like the content browser being something thats not always on screen/that covers up the bottom? Right-click on a file and select "Show in new content browser" near the top. This will generate a tab with the content browser, so you can put it wherever you want. Very nice for opening several things in a row.
