@@ -52,7 +52,7 @@ I used, in the skin section of the toolbox, "edit weights" to assign weights. Ot
   + Selecting can be kinda buggy at small levels. However, if you know where the vertices already have weight (by default the root/top bone in heirarchy), you can select all affected vertices, and then click "Isolate selected" (just above "flood"), which will make it so you can only see those vertices. This is useful because...
   + ...selected vertices stay selected when you switch bones! Very nice, though you need to make sure you reset your selected every so often, otherwise you could reassign something again by accident.
 
-##### Some things...don't matter.
+#### Some things...don't matter.
 As of now (Oct. 2025), only the wheels and in some ways the root actually move. Basically, The wheels go up and down, and everything else tilts forward and backward as one thing. Because of this, it ***currently*** doesn't matter how the MSI and arms/legs/wheel connector thing-a-ma-jigs are weight painted, since those bones are frozen in place.
 
 This may be changed in the future, but it would require some extra details to make the bones actually connect to the wheels and such.
@@ -63,6 +63,8 @@ Are the bones in the right place? Do the weights of bones look reasonable? If yo
 
 ## Physics Asset
 
+The Physics Asset is used for collisions.
+
 Right click on skele mesh -> create -> physics asset -> "Create and assign"; "Create" should also work, since you should be able to assign it later if you don't, but I'm not sure where you actually assign it, so good luck if you choose that method. 
 
 As with most things, mimic Talos/Hyperions' physic bodies; 6 spheres for the wheels, a box for the center piece, unspecific capsules for the MSIs, and more specific capsules for the legs/arms/thing-a-ma-jiggits.
@@ -72,40 +74,80 @@ As with most things, mimic Talos/Hyperions' physic bodies; 6 spheres for the whe
 Position and Scale added bodies to match the rover, similar to how it was done in the tutorial.
 
 The tutorial covers this quite well, and the defaults for many things also align with the rover. I have a few notes, however.
++ The video mentions...
+  + importing a custom mesh - no, we don't have one.
+  + Measuring the wheel - its probably fine, and I couldn't get the measurement too to function...so...
 + If you click on a physics body (be careful not to click the colored sphere), at the bottom left in a tab called "graph," you should see a set of connected bodys.
 + I do not completely understand this, but the green boxes are the physic bodies, one of which is the one you have selected, and the others are the kind of the parent or children of the physic body (actually the physic bodys of the bone-parent/children of the current physic body's bone. Weird, right?)
 + The yellow boxes are the constraints. I understand these even less, but the key note is this; you need to lock all the axiis of the MSI and knuckles and legs/arms/yada-yada-yada.
   + You may have seen **annoying red and green spheres** that you can actually select instead of the physic bodies. These (in some way) represent the constraints. I believe you can also click on them and lock all of their axiis, accomplishing what is *probably* the same thing. ( Right side -> Details -> angular limits -> Swing 1 motion, Swing 2 motion, Twist Motion -> lock'em )
     + This was an extremely annoying issue to find and fix. Figured out some good strategies though, which I will mention later.
 
-## Control Rig
+## The Blueprint
+
+The Blueprint adds a bunch of default and Rover Specific functionality, and makes different components work together.
+
+Copy the blueprint from another rover rather than making a new one like the tutorial says. You do not want to have to copy all the other stuff over AND test it. Also, **for any blueprints, make sure to rename them.**
+
+Initially, selecting the main piece of the blueprint in components gives an overwhelming amount of information on the left. Do not use this menu. It contains some stuff for nodes, some as far as I know used stuff for *clothing,* and very few things you need for this process. Use the mesh (child) directly underneath it and the Vehicle movement component that can be seen at the bottom by closing the mesh's heirarchy and looking below that line that is there for some reason. 
+
+If the tutorial tells you to assign something, you should be good to assign it. If it tells you to create something, probably don't. In fact,
++ Don't make new wheels; instead, swap out the wheels; note the bone names, and the fact that, if you changed them, this *might* be the only place you need to change them again.
++ Don't make a new wheel class asset. Use a copy of the one(s?) from the older rovers. The center and rear don't actually seem to be used, so you might not need to copy them.
++ Copy the torque curve. As with others, don't forget to rename. Also, make sure to actually assign it to the place it was created in the video.
+  + This may be altered in the future, since the rover is electic.
++ Don't add controls, enable simulate physics, add it to the world, etc.; move to the next step. The tutorial will resume on Animation Blueprint (directly after blueprint).
+*note; there may be some other things in the blueprint that the video has not gotten to yet that need to be swapped out. See future sections.* 
+### The Controls
+
+You can see some of this...somewhere in the nodes, but it is far more useful to follow
+Edit -> project settings -> Engine -> Input
+And see the controls all laid out.
+
+Do not edit these, or at least make sure not to commit the changes.
+### Assigning as main
+
+On the same level as the folder MRDT Models should be a folder poorly named "RoveSoSimulator" (or maybe its required idk). This contains an asset/blueprint class called RoveSoSimulatorGameMode. Following Classes -> Default Pawn Class, you should find the blueprint of the rover currently active. Switch it out for the blueprint of the new one you've created. You should then be able to run the simulator with your new rover, *possibly* without animations.
 
 ## Animation Blueprint
 
-## The Blueprint
+Resume the tutorial at the animation blueprint stage (skipping/ignoring the rest of "blueprint"). Create as it says
 
-### The controls
+## Control Rig
 
-## Assigning as main
+Create the Control Rig and reconfigure the animation blueprint as done in the tutorial, **and then stop.**
+Rover suspension is...different and basically unimplemented in the sim. Besides, this is mainly visual.
+You should be done with the tutorial at this point.
+Double check the rover still works.
 
-## Jangly legs issue
+## Repositioning Other Components (LED and Cameras), Material Change
 
-### debugging by substituation
+In the rover blueprint, look in the centerpiece--- evil and obvious, the nightmare node-scape. Ignore it, and replace it by switching the tab from "Event Graph" to "Viewport." You should see the rover, plus a camera way behind it and a text-box-thing, and hopefully some other floaty bits. These other floaty bits are the second to last task; one is an LED panel and the other is a ZED camera (not the actual way back in-game camera, but the camera that will go on the rover). Move these...where they should be, which may very but should include the LED panel in the back, clearly visible to the game camera, and the ZED camera somewhere in the front; it should have a slot, but Talos' mesh, for example, doesn't have it. If there is a rear ZED camera now, there will hopefully be a place for it like the one in front; otherwise, ask your lead or put in back somewhere that it can't obstruct the LED panel too much.
 
-## Repositioning Other Components (LED and Cameras)
+Changing the materials was done in the **blueprint** (rather than the mesh), and went from "Mesh" (left panel) -> "Materials" (right panel, ~6 down) -> whatever materials need to be changed. No known order for the whole thing, unfortuately, but for Talos #2 was the body and the last (#18) was the wheels. This will likely vary with the order of how the files are combined together to create the original file. 
+
+## Bugs I ran into and Advice for **Killing them Dead**
+
+(Unreal Issue) Weight Painting Selection problems - see late weight paint bullet point about "Isolate Selected" 
+- when weight painting and zoomed in a lot, some vertices would not let me select them
+
+
+(Results Issue) Jangly legs - see physics asset, annoying red and green spheres
+- The legs went wherever they want. Understanding of issue delayed by lack of understanding the lack of animation complexity.
+
+### Debugging by Substitution
+
+Many of the assets between the rovers, at least for Hyperion and Talos, could be substituted for each other with very little, if any, consequence. So; do that. If something is wrong, process of elimation is kinda available.
 
 ## A few notes on Unreal 
 #### File Movements
 + Packing all of the materials into a folder affected nothing.
 + Moving the specific rover folder into a new set of rovers folder did not affect anything
- + Unreal's references allow you to select from all applicatable options; e.g. changing a material offers only materials. This is likely part of the reason the file changes don't cause problems. 
+ + Unreal's references allow you to select from all applicatable options; e.g. changing a material offers only materials. This is likely part of the reason the file changes don't cause problems. There are upsides to using a UI-thing.
 #### Copy, paste, delete
-+ Copying files and other things can be chaotic in unreal. If you want to duplicate something though, the way is simple---if unintuitive. Just try to move it by dragging the file where you want the copy, and unreal will prompt you with whether you want to copy or move it there.
- + Fun Fact! Unreal 5.6 does not support importing Uasset files --- what it saves files as in its projects! There may be a technical reason, but I still hate it. 
++ Copying files and other things can be chaotic in unreal. If you want to duplicate something though, the way is simple---if unintuitive. Just try to move it by dragging the file where you want the copy, and Unreal will prompt you with whether you want to copy or move it there.
+ + Fun Fact! Unreal 5.6 does not support importing Uasset files --- what it saves many files as in its projects! There may be a technical reason, but I still hate it. 
 + If you can't delete something from the right-click menu, try pressing the delete or backspace key. 
  + If that doesn't work, try to find an editor or similar where you can add more of whatever you want to destoy. If you can create it, you should be able to destroy it.  
-File system move things ++++
 #### Windows/Content Browser
 Don't like the content browser being something thats not always on screen/that covers up the bottom? Right-click on a file and select "Show in new content browser" near the top. This will generate a tab with the content browser, so you can put it wherever you want. Very nice for opening several things in a row.
-## Input
-## Material Change
