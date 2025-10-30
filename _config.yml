@@ -22,8 +22,8 @@ navigation:
     name: "Importing Talos - 2"
   - link: "/pages/lidar-point-cloud-generation-system.html"
     name: "Lidar Point Cloud Generation System"
-  - link: "Using RoveSoSimulator"
-    name: "/pages/simulator-use.html"
+  - link: "/pages/simulator-use.html"
+    name: "Using RoveSoSimulator"
 defaults:
   - scope:
       path: "" # an empty string here means all files in the project
