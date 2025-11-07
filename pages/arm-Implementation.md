@@ -69,6 +69,39 @@ In the content browser, select "import." I imported it as a static mesh and conv
 
 Should be done as quick as that, though if you experience a bug (crash level) with weight painting later, you may want to see the entry on bugs.
 
+## Controls
+|++++|++++|-|\_|-|\_|-|\_|-**Construction**-|\_|-|\_|-|\_|++++|++++|
+For 2025, the arm was controlled by an xbox controller with the following keybinds;
++ Right stick
+  + Left-Right: X-axis
+  + Up-Down: J2
++ Left stick
+  + Left-Right: J4
+  + Up-Down: J3
++ Triggers: Pitch
++ Bumpers: Roll
++ D-Pad Left-Right: Gripper
++ A, B: Laser
++ X, Y: Solenoid
+
+What's done where;
++ In animation editor, you modify bones based on variables-...
++ ...+variables which are in the main blueprint and are given values based off control inputs-...
++ ...+control inputs (+which+) are made in Project Settings -> Input (see "How" section later)
+
+How to;
++ Add a control via Edit (Top bar) -> Project Settings -> Input (Left side, Engine section)
+  + Warning about Enhanced input *may* be irrelevant; I am uncertain whether we are actually using it
++ Add an input action by right-clicking to pull up a search-and-add menu; search for "InputAction" *or* "InputAxis" and you should be able to select the one you need (names are convenient)
++ Add a variable through the plus next to My Blueprint -> Variables
+  + Drag it in or use the search-and-add method to create a node for using it
+
+Extra Notes; 
++ Want to remove a connection between 2 nodes? Ctrl-click.
+
+|++++|++++|-|\_|-|\_|-|\_|-**Construction**-|\_|-|\_|-|\_|++++|++++|
+## Extra Things
+Add a camera in the blueprint via the Components (left) -> "+ Add" button -> Camera. Move it in the heirarchy to be a child of the skeleton mesh. Select the camera, and in Details (window) -> Sockets -> Parent Socket use the file-search button to 
 ## Venting and bugs
 Process Location: Importing the created mesh, weight paint the mesh
 
