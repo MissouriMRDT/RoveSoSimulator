@@ -69,7 +69,7 @@ In the content browser, select "import." I imported it as a static mesh and conv
 
 Should be done as quick as that, though if you experience a bug (crash level) with weight painting later, you may want to see the entry on bugs.
 
-## Controls
+## Controlling the Arm
 |++++|++++|-|\_|-|\_|-|\_|-**Construction**-|\_|-|\_|-|\_|++++|++++|
 For 2025, the arm was controlled by an xbox controller with the following keybinds;
 + Right stick
@@ -84,24 +84,53 @@ For 2025, the arm was controlled by an xbox controller with the following keybin
 + A, B: Laser
 + X, Y: Solenoid
 
+Additionally, for use with only a keyboard, the following bindings were placed;
++ x-axis/J1; z-x
++ J2 (shoulder-bicep) - shift-ctrl
++ J3 (bicep-forarm) - w-s
++ J4 (forearm roll) - a-f
++ J5 (wrist up-down) - e-d
++ J6 (gripper roll) - q-r
++ Gripper Open-close; v-c (c to close, v shape when open)
+
+Finally, the following keys were used for extra features;
++ 0 - camera switch
+
 What's done where;
-+ In animation editor, you modify bones based on variables-...
-+ ...+variables which are in the main blueprint and are given values based off control inputs-...
-+ ...+control inputs (+which+) are made in Project Settings -> Input (see "How" section later)
++ In control rig-editor, you modify bones based on controls. "Controls" are basically elements made to simplify the moving of bones; a control could move and have several other bones copy its movement, or the controls could be targets of things. For reference to how minor they are, in Blender, "controls" themselves don't actually exist, people just use bones. 
++ In the main (arm) blueprint, the controls are given values based off control inputs. This isn't done all in one thing because the main blueprint doesn't have access to the bones, and the control rig doesn't have access to input.
+  + Additionally, because there are two layers, limits are actually applied twice; from the input to the controls, and once from the controls to the bones.
+  + "Fun" fact; the control rig and main blueprint have access to what may be entirely different sets of nodes. Even the add nodes are different. (This is really annoying for copy-pasting)
++ The control inputs are made in Project Settings -> Input (see "How" section later)
 
 How to;
-+ Add a control via Edit (Top bar) -> Project Settings -> Input (Left side, Engine section)
-  + Warning about Enhanced input *may* be irrelevant; I am uncertain whether we are actually using it
-+ Add an input action by right-clicking to pull up a search-and-add menu; search for "InputAction" *or* "InputAxis" and you should be able to select the one you need (names are convenient)
-+ Add a variable through the plus next to My Blueprint -> Variables
-  + Drag it in or use the search-and-add method to create a node for using it
++ 
++ Add a (bone) control by right 
 
-Extra Notes; 
+What was done;
++ Input Controls were a control binding via Edit (Top bar) -> Project Settings -> Input (Left side, Engine section)
+  + There is a warning about Enhanced input. It *may* be irrelevant; I am uncertain whether we are actually using it
++ Read from input by adding input actions nodes in the blueprint; right-click to pull up a search-and-add menu; search for "InputAction" *or* "InputAxis" and you should be able to select the one you need (names are convenient)
++ Feed the process order (white triangle bar thing) into the function "Bone Control," a function I made for this to significantly condense the code. Heres a guide to the parameters/input;
+  + white triangle-house-pentagon thing; evaluation order. Won't run if you don't start it, so connect it to the input axis.
+  + Target; uncertain: not an actual chosen parameter, I believe it is something to do with the space it evaluates? Should just stay as "self."
+  + Input Axis; how much the input axis...is? Feed "Axis value" from the input axis node into this.
+  + Control Name; name of the control to affect. Must be exact. No dropdown because this isn't in the control rig :(
+  + Rot(T) or Transf(F); Whether to affect the rotation or transformation (turn or relocate). The (T) and (F) show true and false
+  + Rate XYZ; the rate to change x, y and z, for the choice of transformation or rotation. If a value is zero, it does not change that axis.
+  + Limit; boolean for whether or not to limit the bone. Important if something can rotate indefinitely.
+  + Min XYZ; minimum values for x, y, and z that the control can be transformed to.
+  + Max XYZ; minimum values for x, y, and z that the control can be transformed to. 
++ Extra Notes; 
 + Want to remove a connection between 2 nodes? Ctrl-click.
 
 |++++|++++|-|\_|-|\_|-|\_|-**Construction**-|\_|-|\_|-|\_|++++|++++|
 ## Extra Things
-Add a camera in the blueprint via the Components (left) -> "+ Add" button -> Camera. Move it in the heirarchy to be a child of the skeleton mesh. Select the camera, and in Details (window) -> Sockets -> Parent Socket use the file-search button to 
+Add a camera in the blueprint via the Components (left) -> "+ Add" button -> Camera. Move it in the heirarchy to be a child of the skeleton mesh. Select the camera, and in Details (window) -> Sockets -> Parent Socket use the file-search button to assign the camera to a bone.
+
+## Out of Order Changes
+If you alter the original mesh, you can right-click on the mesh in unreal and reimport it. May not update things based on it, however. 
+If you make a change to the skeleton after creating the control rig, right-click on the Root bone (the total parent bone) -> Assets (section) -> Refresh -> select the skeletal mesh.
 ## Venting and bugs
 Process Location: Importing the created mesh, weight paint the mesh
 
