@@ -96,8 +96,32 @@ Additionally, for use with only a keyboard, the following bindings were placed;
 Finally, the following keys were used for extra features;
 + 0 - camera switch
 
+The arm has several pieces.
++ Static mesh
+  + Holds a nonmovable version of a mesh.
+  + Unnecessary unless you need to remake the skeletal mesh.
+  + Made with import; avoidable.
++ Skeleton
+  + Holds the bones of the skeletal mesh.
+  + Made with skeletal mesh, but can also be made solo if going through more options. 
++ Skeletal mesh
+  + Holds the mesh (vertices and stuff), also connects to skeleton?
+  + Modify the skeleton, give vertex weights (weight painting), change materials (colors and textures), and possibly alter the mesh itself here (I did any changes in blender and reshipped. Feature untested).
+  + Created from static mesh; options allow for it to make a new skeleton or use an existing one.
++ Blueprint
+  + Relates many components together. Also contains assets like cameras.
+  + Contains some node logic; currently only known area that can access input axis and input actions.
+  + 
++ Control Rig
+  + Contains controls that reference the skeleton it was created from.
+    + "Controls" are basically elements made to simplify the moving of bones; a control could move and have several other bones copy its movement, or the controls could be targets of things. For reference to how minor they are, in Blender, "controls" themselves don't actually exist, people just use bones that don't have any assigned weights.
+  + In the contr
+  + Created from Skeletal Mesh
+
+What was done; 
+
 What's done where;
-+ In control rig-editor, you modify bones based on controls. "Controls" are basically elements made to simplify the moving of bones; a control could move and have several other bones copy its movement, or the controls could be targets of things. For reference to how minor they are, in Blender, "controls" themselves don't actually exist, people just use bones. 
++ In control rig-editor, you modify bones based on controls.  
 + In the main (arm) blueprint, the controls are given values based off control inputs. This isn't done all in one thing because the main blueprint doesn't have access to the bones, and the control rig doesn't have access to input.
   + Additionally, because there are two layers, limits are actually applied twice; from the input to the controls, and once from the controls to the bones.
   + "Fun" fact; the control rig and main blueprint have access to what may be entirely different sets of nodes. Even the add nodes are different. (This is really annoying for copy-pasting)
@@ -107,9 +131,36 @@ How to;
 + 
 + Add a (bone) control by right 
 
-What was done;
-+ Input Controls were a control binding via Edit (Top bar) -> Project Settings -> Input (Left side, Engine section)
+## What was done;
+Static mesh, Skeleton, Skeletal Mesh
++ Converted imported Static Mesh to Skeletal Mesh. Created a skeleton. Resolved a problem with bad geometry (bug). Weight painted skeletal Mesh. 
+
+Control Rig
++ Created from Skeletal mesh
++ Added controls (right-click bone in heirarchy) for xAxis, J2 through J6, and one each for left and right gripper. Separated controls from the bone heirarchy, but maintained a control heirarchy.
+  + Left and right gripper are G1R and G1L. G3R was an attempt to add an extra, more complicated (and not finished) rotation.  
++ Nodes
+  + Controls by themselves don't change the bones. Need nodes.
+  + From Forwards solve, offset transform of bone(s); value for offset first from a control, then clamped (possibly redundant measure, see blueprint). Ordered from furthest out to furthest in the hierarchy.
+    + All of Gripper Right before gripper left.
+    + Drag controls and bones from the Rig Hierarchy window to get nodes easier.
+    + Some of the gripper math (led up to G3R) may be unnecessary; not sure if both x and y should be affected, can't be bothered to check. 
+
+Animation Blueprint
++ Created from Skeletal mesh
++ Potential alternative to control rig, but I couldn't figure it out, and it may be for true "animations" (clip of movements). May still be necessary.
++ Only note; control rig node set up as the only (significant) node between what is effectively input and output for the animation node. Any setting changes are unknown.
+
+General Settings
++ Input Controls were made via Edit (Top bar) -> Project Settings -> Input (Left side, Engine section)
   + There is a warning about Enhanced input. It *may* be irrelevant; I am uncertain whether we are actually using it
++ Its an axis if you might ever want it bound to a joystick---or if it has opposite poles, rather than a toggle or selection option.
++ Alternatively; if you need two buttons for the main functionality, its an axis. If its not 2/not possible to organize as pairs, its probably an input action.
+
+Blueprint
++ Created Blueprint as "Pawn", added skeleton mesh, cameras, control rig
+  + Added cameras into the blueprint via the Components (left) -> "+ Add" button -> Camera. Moved the "real" one in the heirarchy to be a child of the skeleton mesh, then assigned it to a bone; selected camera, then in Details (window) -> Sockets -> Parent Socket used the file-search button to assign bone of choice. Rotated as necessary in viewport. Second Camera is an outerview for testing purposes; essentially convient freecam, since you can't move things while in freecam as far as I'm aware.
+  + Added the Control rig. 
 + Read from input by adding input actions nodes in the blueprint; right-click to pull up a search-and-add menu; search for "InputAction" *or* "InputAxis" and you should be able to select the one you need (names are convenient)
 + Feed the process order (white triangle bar thing) into the function "Bone Control," a function I made for this to significantly condense the code. Heres a guide to the parameters/input;
   + white triangle-house-pentagon thing; evaluation order. Won't run if you don't start it, so connect it to the input axis.
@@ -120,13 +171,18 @@ What was done;
   + Rate XYZ; the rate to change x, y and z, for the choice of transformation or rotation. If a value is zero, it does not change that axis.
   + Limit; boolean for whether or not to limit the bone. Important if something can rotate indefinitely.
   + Min XYZ; minimum values for x, y, and z that the control can be transformed to.
-  + Max XYZ; minimum values for x, y, and z that the control can be transformed to. 
-+ Extra Notes; 
+  + Max XYZ; maximum values for x, y, and z that the control can be transformed to. 
++ Canera switch was also set up here; it just checks what camera is active, sets the new to active and the original to inactive. No complexity for more than 2 cameras (yet)
+
+Physics
++ 
+
+Extra Notes; 
 + Want to remove a connection between 2 nodes? Ctrl-click.
 
 |++++|++++|-|\_|-|\_|-|\_|-**Construction**-|\_|-|\_|-|\_|++++|++++|
 ## Extra Things
-Add a camera in the blueprint via the Components (left) -> "+ Add" button -> Camera. Move it in the heirarchy to be a child of the skeleton mesh. Select the camera, and in Details (window) -> Sockets -> Parent Socket use the file-search button to assign the camera to a bone.
+
 
 ## Out of Order Changes
 If you alter the original mesh, you can right-click on the mesh in unreal and reimport it. May not update things based on it, however. 
