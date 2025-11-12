@@ -6,7 +6,7 @@ Arm Development process
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 
-## Part One: Measurements, Mesh, and the CAD Gripper 
+## Pre-Unreal: Measurements, Mesh, and the CAD Gripper 
 Due to the sheer size (# of pieces and vertices) of the arm CAD file, it was decided that it would be easier to make the arm manually with measurements---with the exception of the gripper---rather than process the CAD file directly. The given measurements are as follows; 
 x-axis - 21 inches long, 6 inches tall, *Depth*
 Carraige - 1 inch of thickness, *height and length* made to match shoulder connection
@@ -62,7 +62,7 @@ Go to file -> export -> .fbx (for meshes, and **not the experimental one**)
 
 I suggest using "Include" -> limit to -> "selected objects" and changing object types to just "mesh." Also change "Forward" to Z forward rather than -Z. You can save these presets for later use.
 
-## Importing into Unreal
+### Importing into Unreal
 
 In the content browser, select "import." I imported it as a static mesh and converted it, but may work better to import it as a skeletal mesh. 
 *tip: at least with the static mesh, you can use a reimport button to have unreal reimport the asset from the same file location. Good if you make some changes to the blender version and re-export. Noteworthy that it does not affect the skeletal mesh you create off it. Untested on importing and then reimporting for the skeletal mesh, but other experience found nonsensical conflicts. Unreal truly is one of the Game Engines of all time.*
