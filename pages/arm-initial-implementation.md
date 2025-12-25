@@ -1,7 +1,37 @@
-Arm Development process
+Initial Arm Development and Implementation Process
 # Under Development
 ![arm diagram](../assets/images/armDiagram.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)
-
+## Overview
+1. Skeletal Mesh
+   The model of the arm; what you see.
+2. Skeleton
+   Base setup for moving/manipulating the mesh (#1)
+3. Control Rig
+   Set up for manipulating the bones (#2) which manipulate the mesh. Necessary piece inbetween skeleton and actual control values 
+4. Blueprint
+   Container that connects the previous assets together with other things, such as the keyboard inputs and the lasers.
+5. Physics Asset
+   Hitboxes and such.
+6. Futher notes
+   Additions made/to be made after implementation, such as switching to the enhanced input system and better physics.   
+## Skeletal Mesh
+#### Pre-Unreal
+Due to the sheer size (# of pieces and vertices) of the arm CAD file, it was decided that it would be easier to make the arm manually with measurements---with the exception of the gripper---rather than process the CAD file directly.
+#### Unreal
+Generally negligable; control rig assigned as default animation rig.
+## Skeleton
+One bone per joint/axis; J1/x-axis though J6
+Gripper has an ten bone structure; 5 for the left, 5 for the right; 4 are in a chain, and the last of them does not affect the mesh, but instead acts as a reference for the one bone not in the chain.
+## Control Rig
+The control rig contains controls; one for each joint J1-J6, one for the solenoid, and one for each side of the gripper. The each of the gripper's controls modifies the rotation of two bones; one to move the sides entirely, and another to keep the jaws straight. Additionally, the reference bone is used to point another bone toward it.
+The Forwards solve updates the bones bases on the controls as the game runs (every frame or something). The Construction script runs when the object is constructed; this means it actually runs in the Blueprint as well---this can be seen by selecting the control rig in the blueprint. The Construction script sets up the arm's default position (changing it can make testing far more convenient, but make sure to set it back).
+## Blueprint
+## Physics Asset
+## Further Notes
+Future Additions/Lacking Implementations
++ Enhanced Input is not yet implemented; this is a system has input in specific assets rather than a total menu in settings. High priority, likely done before anyone else sees this.
++ Gripper starts...pincering? after it is no longer able to close normally. This gives it more contact, but is complex skeleton wise. Would also need...
++ ...advanced physics interactions; gripper and solenoid both ignore/override things in the way, e.g. closing completely on a cube, which would not normally be possible. Potential Solution; double the skeleton, with one set up with the controls, and the other set up to follow them with a certain amount of force. Allows for a desired position and an actual position to exist.  
 ## Overview
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
