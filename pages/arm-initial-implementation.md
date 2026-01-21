@@ -22,7 +22,7 @@ This Page discusses the setup for the arm, with a focus on how it works but not 
 Due to the sheer size (# of pieces and vertices) of the arm CAD file, it was decided that it would be easier to make the arm manually with measurements---with the exception of the gripper---rather than process the CAD file directly.
 #### Unreal
 The mesh was imported as a static mesh to make reimporting easier, as you can just press reimport on the mesh, the a skeletal mesh can have strange material conflicts. The static mesh can be converted to a skeletal mesh by right clicking on it in the content browser. There you can also choose whether to make a new skeleton or using an existing one---the latter of which is what to do when reimporting to fix the mesh. 
- control rig assigned as default animation rig, and physics asset assigned.
+The control rig is assigned as default animation rig, and physics asset assigned. Noteability, the Control rig step may not be necessary and may possiblely have no effect, due to how the control rig has to be assigned in the blueprint. However, the Physics Asset is assigned and takes effect here in the Skeletal mesh rather than in the blueprint. 
 ## Skeleton
 Edited in the skeleton mesh for some reason.
 One bone per joint/axis; J1/x-axis though J6
