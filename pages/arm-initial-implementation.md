@@ -2,6 +2,7 @@ Initial Arm Development and Implementation Process
 # Under Development
 ![arm diagram](../assets/images/armDiagram.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)
 ## Overview
+This Page discusses the setup for the arm, with a focus on how it works but not so much how to remake it, as future iterations will build off whats there, and this is the first arm. 
 1. Skeletal Mesh
    The model of the arm; what you see.
 2. Skeleton
@@ -12,20 +13,29 @@ Initial Arm Development and Implementation Process
    Container that connects the previous assets together with other things, such as the keyboard inputs and the lasers.
 5. Physics Asset
    Hitboxes and such.
-6. Futher notes
+6. On the Rover and Taking Control
+   How switching to the arm from the Rover works
+7. Futher notes
    Additions made/to be made after implementation, such as switching to the enhanced input system and better physics.   
 ## Skeletal Mesh
 #### Pre-Unreal
 Due to the sheer size (# of pieces and vertices) of the arm CAD file, it was decided that it would be easier to make the arm manually with measurements---with the exception of the gripper---rather than process the CAD file directly.
 #### Unreal
-Generally negligable; control rig assigned as default animation rig.
+The mesh was imported as a static mesh to make reimporting easier, as you can just press reimport on the mesh, the a skeletal mesh can have strange material conflicts. The static mesh can be converted to a skeletal mesh by right clicking on it in the content browser. There you can also choose whether to make a new skeleton or using an existing one---the latter of which is what to do when reimporting to fix the mesh. 
+ control rig assigned as default animation rig, and physics asset assigned.
 ## Skeleton
+Edited in the skeleton mesh for some reason.
 One bone per joint/axis; J1/x-axis though J6
 Gripper has an ten bone structure; 5 for the left, 5 for the right; 4 are in a chain, and the last of them does not affect the mesh, but instead acts as a reference for the one bone not in the chain.
+The multitool's Solenoid is a single bone.
+After the skeleton is complete, you can weight paint in another section of the skeletal mesh. **Note**: I have experienced consistant crashes related to weight painting where unreal completely crashes when you hit "accept". Make sure the skeleton is saved before weight painting. If it crashes when you hit accept, the issue will likely be with the geometry of the mesh, though I'm not sure exactly how, as my experiences differ slightly;
+1. The bicep distinctly and seemingly some pieces of the gripper had strange geometry. Solution; redo that geometry
+2. Later, the camera pieces, which were redone a few times, had an issue where either a certain area or a certain amount of geometry would cause them to crash. In other words, the vertices could not be deleted and remade. Solution; add a ridiculously high vertice count sphere, try some importing, and then delete the sphere and reimport (not precise, really a chuck it at the wall solution). 
 ## Control Rig
 The control rig contains controls; one for each joint J1-J6, one for the solenoid, and one for each side of the gripper. The each of the gripper's controls modifies the rotation of two bones; one to move the sides entirely, and another to keep the jaws straight. Additionally, the reference bone is used to point another bone toward it.
 The Forwards solve updates the bones bases on the controls as the game runs (every frame or something). The Construction script runs when the object is constructed; this means it actually runs in the Blueprint as well---this can be seen by selecting the control rig in the blueprint. The Construction script sets up the arm's default position (changing it can make testing far more convenient, but make sure to set it back).
 ## Blueprint
+The Blueprint 
 ## Physics Asset
 ## Further Notes
 Future Additions/Lacking Implementations
