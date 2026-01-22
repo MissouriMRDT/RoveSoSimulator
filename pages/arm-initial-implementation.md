@@ -34,8 +34,15 @@ After the skeleton is complete, you can weight paint in another section of the s
 ## Control Rig
 The control rig contains controls; one for each joint J1-J6, one for the solenoid, and one for each side of the gripper. The each of the gripper's controls modifies the rotation of two bones; one to move the sides entirely, and another to keep the jaws straight. Additionally, the reference bone is used to point another bone toward it.
 The Forwards solve updates the bones bases on the controls as the game runs (every frame or something). The Construction script runs when the object is constructed; this means it actually runs in the Blueprint as well---this can be seen by selecting the control rig in the blueprint. The Construction script sets up the arm's default position (changing it can make testing far more convenient, but make sure to set it back).
+The Custom Function QuartClampViaEuler is used for applicable bones to limit the bone's rotation (not translation though). It is functionally a failsafe, preventing bones from moving out even if the controls are somehow moved out of place; this makes the control rig limits functional in the control rig viewport. If the blueprint limits were removed, you would be able to rotate the controls beyond what the bones actually do, and have to move the extra distance back before being able to see control affect the joints again.
 ## Blueprint
-The Blueprint 
+#### Nodes
+The Blueprint modifies the location of each control in the control rig, which then modifies the bone. This is done with a custom function named "boneControl," which condenses all of the functionality. Bone control only modifies one bone at a time, and only either the position or the rotation. Limits are in degrees or centimeters, and are set as vectors for condensation. The rate is in degrees per second or centimeters. The limit checkmark determines if it applies a limit (uncheck for infinite rotation). It is possible to move or rotate a single bone along multiple axiis, and even at different rates, but a single bone Control node can not be used to move multiple bones (besides how children are moved by parents) nor to move a single bone by input axis values from different input axiis.
+*If bone control is not working, make sure rate, min and max are all set to the same axis. Don't forget to check the control rig, which also has its own limits to apply.*
+**********The control rig also has limits?
+
+The Blueprint activates and deactives lasers by changing visibility. 
+
 ## Physics Asset
 ## Further Notes
 Future Additions/Lacking Implementations
