@@ -7,7 +7,7 @@ This Page discusses the setup for the arm, with a focus on how it works but not 
    The model of the arm; what you see.
 2. Skeleton
    Base setup for moving/manipulating the mesh (#1)
-3. Control Rig
+3. Control Rig and Animation Blueprint
    Set up for manipulating the bones (#2) which manipulate the mesh. Necessary piece inbetween skeleton and actual control values 
 4. Blueprint
    Container that connects the previous assets together with other things, such as the keyboard inputs and the lasers.
@@ -17,38 +17,68 @@ This Page discusses the setup for the arm, with a focus on how it works but not 
    How switching to the arm from the Rover works
 7. Futher notes
    Additions made/to be made after implementation, such as switching to the enhanced input system and better physics.   
+
 ## Skeletal Mesh
+Placed in the Blueprint; not really "assigned." However, other components, including the skeleton, control rig, and animation blueprint, have it assigned as a preview mesh. 
+Contains assignments for skeleton, control rig, and animation blueprint. The skeleton appears to be assigned under mesh, but cannot be switched out (???). The control rig is assigned as the default animation rig, and the physics asset is assigned under physics. Noteability, the Control rig assignment may not do anything. However, the Physics Asset assignment is done here in the Skeletal mesh rather than in the blueprint; no other known options.
+
 #### Pre-Unreal
 Due to the sheer size (# of pieces and vertices) of the arm CAD file, it was decided that it would be easier to make the arm manually with measurements---with the exception of the gripper---rather than process the CAD file directly.
 #### Unreal
 The mesh was imported as a static mesh to make reimporting easier, as you can just press reimport on the mesh, the a skeletal mesh can have strange material conflicts. The static mesh can be converted to a skeletal mesh by right clicking on it in the content browser. There you can also choose whether to make a new skeleton or using an existing one---the latter of which is what to do when reimporting to fix the mesh. 
-The control rig is assigned as default animation rig, and physics asset assigned. Noteability, the Control rig step may not be necessary and may possiblely have no effect, due to how the control rig has to be assigned in the blueprint. However, the Physics Asset is assigned and takes effect here in the Skeletal mesh rather than in the blueprint. 
+
 ## Skeleton
+Auto (???) assigned in the Skeletal Mesh.
+Does not appear to assign anything functional itself, but does have a Preview Mesh that should be assigned to the applicable Skeletal Mesh.
 Edited in the skeleton mesh for some reason.
-One bone per joint/axis; J1/x-axis though J6
+
+One bone per joint/axis; J1/x-axis though J6.
 Gripper has an ten bone structure; 5 for the left, 5 for the right; 4 are in a chain, and the last of them does not affect the mesh, but instead acts as a reference for the one bone not in the chain.
 The multitool's Solenoid is a single bone.
 After the skeleton is complete, you can weight paint in another section of the skeletal mesh. **Note**: I have experienced consistant crashes related to weight painting where unreal completely crashes when you hit "accept". Make sure the skeleton is saved before weight painting. If it crashes when you hit accept, the issue will likely be with the geometry of the mesh, though I'm not sure exactly how, as my experiences differ slightly;
 1. The bicep distinctly and seemingly some pieces of the gripper had strange geometry. Solution; redo that geometry
 2. Later, the camera pieces, which were redone a few times, had an issue where either a certain area or a certain amount of geometry would cause them to crash. In other words, the vertices could not be deleted and remade. Solution; add a ridiculously high vertice count sphere, try some importing, and then delete the sphere and reimport (not precise, really a chuck it at the wall solution). 
-## Control Rig
+
+## Control Rig and Animation Blueprint
+The Control Rig is assigned to the mesh by the blueprint, animation blueprint, and (possibly nonfunctionally) by the skeletal mesh. 
+Assigns itself a preview mesh; does not appear to connect any other assets.
+
+The Animation Blueprint has not been experimented much with, but it has a node aptly called the "Control Rig" that seems to connect the control rig to the Animation Blueprint (which is later connected to the mesh in the Blueprint). It also has a preview mesh. 
+
 The control rig contains controls; one for each joint J1-J6, one for the solenoid, and one for each side of the gripper. The each of the gripper's controls modifies the rotation of two bones; one to move the sides entirely, and another to keep the jaws straight. Additionally, the reference bone is used to point another bone toward it.
 The Forwards solve updates the bones bases on the controls as the game runs (every frame or something). The Construction script runs when the object is constructed; this means it actually runs in the Blueprint as well---this can be seen by selecting the control rig in the blueprint. The Construction script sets up the arm's default position (changing it can make testing far more convenient, but make sure to set it back).
 The Custom Function QuartClampViaEuler is used for applicable bones to limit the bone's rotation (not translation though). It is functionally a failsafe, preventing bones from moving out even if the controls are somehow moved out of place; this makes the control rig limits functional in the control rig viewport. If the blueprint limits were removed, you would be able to rotate the controls beyond what the bones actually do, and have to move the extra distance back before being able to see control affect the joints again.
+
 ## Blueprint
+Contains a number of components, including ones for the control rig and the skeletal mesh. The Skeletal Mesh Component assigns the skeletal mesh (under "Mesh"), as one would expect, and the Animation Blueprint (under "Animation"). The Control Rig Component only connects with the Control Rig Class.
+
+A node called "Add Mapped Skeletal Mesh" occurs on the Event BeginPlay and I believe connects the Skeletal Mesh to the Control Rig; however, it may be reduntant with the Animation Blueprint's Control Rig assignment
+
 #### Nodes
 The Blueprint modifies the location of each control in the control rig, which then modifies the bone. This is done with a custom function named "boneControl," which condenses all of the functionality. Bone control only modifies one bone at a time, and only either the position or the rotation. Limits are in degrees or centimeters, and are set as vectors for condensation. The rate is in degrees per second or centimeters. The limit checkmark determines if it applies a limit (uncheck for infinite rotation). It is possible to move or rotate a single bone along multiple axiis, and even at different rates, but a single bone Control node can not be used to move multiple bones (besides how children are moved by parents) nor to move a single bone by input axis values from different input axiis.
 *If bone control is not working, make sure rate, min and max are all set to the same axis. Don't forget to check the control rig, which also has its own limits to apply.*
-**********The control rig also has limits?
 
-The Blueprint activates and deactives lasers by changing visibility. 
+The Blueprint activates and deactives lasers by changing visibility. It also connects a Skeletal Mesh and a Control Rig from Event BeginPlay (possibly redundant). Finally, it has a number change system to cycle through Cameras.
+
+#### Components
+The Skeletal Mesh Component contains the visible arm, along with its bone references; as such, components such as the lasers and the Cameras are its children, allowing them to connect to the bones under the "Sockets" section.
+The Control Rig Component contains the KeyboardTestingPoint, an empty body used to place keys such that they can easily be pressed when the arm is spawned in. The Control Rig has some visibility issues in the viewport; turning the camera about and possibly selecting the control rig make it easier to see.
+The Outer View Camera is an arm position reference; very useful to know what position the arm is in without having to navigate with freecam. Noteably, freecam functions strangely when started from a rotated perspective; going from the third person camera fixes this.
 
 ## Physics Asset
+Assigned by Skeletal Mesh. Has a Preview Skeletal Mesh asset that can be reassigned; does not appear to assign anything else.
+
+The Physics Asset contains the Collision Hitboxes for the mesh/skeleton. All (should be) kinematic, meaning they push but don't get pushed; this isn't quite the desired ability, as the arm *can* phase through the floor and can "crush" an object (just causes object to move around weird until it is free again). Boxes are primarily used for collisons; the exception is a nonuniform octoganular prism on the solenoid. Some joints (bend points, not arm segments) do not have collisions, though I now believe the physics bodies can be set to not interact with each other. Finally, only the "inner" parts of the gripper have a hitbox; these points are essential for accurate gripping, though the rest should be given something to make collision more accurate. 
+
+The Physics Asset also contains constraints; however, they are inconsistant about matching their bone's limits. This may not matter because they are currently kinematic. 
+
+The Physics bodies being kinematic may also mean they are driven by the bones rather than driving the bones, as I believe when set to "Simulated" the bones will not move. Unfortunately, the desired interaction is a hybrid, where it move if it can. Future Problem.
+
 ## Further Notes
 Future Additions/Lacking Implementations
 + Enhanced Input is not yet implemented; this is a system has input in specific assets rather than a total menu in settings. High priority, likely done before anyone else sees this.
 + Gripper starts...pincering? after it is no longer able to close normally. This gives it more contact, but is complex skeleton wise. Would also need...
-+ ...advanced physics interactions; gripper and solenoid both ignore/override things in the way, e.g. closing completely on a cube, which would not normally be possible. Potential Solution; double the skeleton, with one set up with the controls, and the other set up to follow them with a certain amount of force. Allows for a desired position and an actual position to exist.  
++ ...advanced physics interactions; gripper and solenoid both ignore/override things in the way, e.g. closing completely on a cube, which would not normally be possible. Potential Solution; double the skeleton, with one set up with the controls, and the other set up to follow them with a certain amount of force. Allows for a desired position and an actual position to exist. Potential Problem; Physics - Kinematic v. Simulated; driven by bones v. drives bones.
 ## Overview
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
