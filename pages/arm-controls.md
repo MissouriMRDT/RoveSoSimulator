@@ -2,6 +2,7 @@
 |++++|++++|-|\_|-|\_|-|\_|-**Construction**-|\_|-|\_|-|\_|++++|++++|
 
 ![arm diagram](../assets/images/armDiagram.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)
+
 For 2025, the arm was controlled by an xbox controller with the following keybinds;
 + Right stick
   + Left-Right: X-axis
