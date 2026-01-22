@@ -4,18 +4,28 @@ Initial Arm Development and Implementation Process
 ## Overview
 This Page discusses the setup for the arm, with a focus on how it works but not so much how to remake it, as future iterations will build off whats there, and this is the first arm. 
 1. Skeletal Mesh
+   
    The model of the arm; what you see.
 2. Skeleton
+   
    Base setup for moving/manipulating the mesh (#1)
 3. Control Rig and Animation Blueprint
+   
    Set up for manipulating the bones (#2) which manipulate the mesh. Necessary piece inbetween skeleton and actual control values 
 4. Blueprint
+   
    Container that connects the previous assets together with other things, such as the keyboard inputs and the lasers.
 5. Physics Asset
+   
    Hitboxes and such.
 6. On the Rover and Taking Control
+   
    How switching to the arm from the Rover works
-7. Futher notes
+7. Tutorials and Sources and Such
+   
+   Links to tutorials used.
+8. Futher notes
+   
    Additions made/to be made after implementation, such as switching to the enhanced input system and better physics.   
 
 ## Skeletal Mesh
@@ -74,11 +84,31 @@ The Physics Asset also contains constraints; however, they are inconsistant abou
 
 The Physics bodies being kinematic may also mean they are driven by the bones rather than driving the bones, as I believe when set to "Simulated" the bones will not move. Unfortunately, the desired interaction is a hybrid, where it move if it can. Future Problem.
 
+## On the Rover and Taking Control
+Occurs in the Client Controller Blueprint, in the RoveSoSimulator folder. A reference here will need to change to make possession possible for new arms, and will have to switch each time the rover is switched :(.
+
+Switching from control of the Rover to the arm requires possessing a component of the Rover. Unfortuately, the arm's status as a component of the rover makes this difficult, since unreal doesn't like to interpret it as a pawn. Solution; on begin play, all actors of the arm class are found, and the first one in that list is made a reference for the Client Controller. There are two problems with this;
+1. No idea how this will function with enhanced input.
+2. Having multiple players (currently outdated) or having an arm already in the scene will break it, as everyone will have the same reference/the reference will be for an arm not on the rover
+3. Making a new arm blueprint will break it.
+
+*If you are looking for the button to switch control between the rover and the arm, it is "U", and due to how Client Controller Functions, this button is the same for both rover to arm and arm to rover.* 
+
+## Tutorials and Sources and Such
+
+Lasers (5 stars, 2 tutorials in one, only need the first part) - [https://www.youtube.com/watch?v=DIaUFv_ogNs]
+
 ## Further Notes
 Future Additions/Lacking Implementations
 + Enhanced Input is not yet implemented; this is a system has input in specific assets rather than a total menu in settings. High priority, likely done before anyone else sees this.
 + Gripper starts...pincering? after it is no longer able to close normally. This gives it more contact, but is complex skeleton wise. Would also need...
 + ...advanced physics interactions; gripper and solenoid both ignore/override things in the way, e.g. closing completely on a cube, which would not normally be possible. Potential Solution; double the skeleton, with one set up with the controls, and the other set up to follow them with a certain amount of force. Allows for a desired position and an actual position to exist. Potential Problem; Physics - Kinematic v. Simulated; driven by bones v. drives bones.
+
+
+<hr>
+<hr>
+<hr>
+OLD STUFF
 ## Overview
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
