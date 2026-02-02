@@ -48,6 +48,14 @@ This creates the `Makefile` required to compile the C++ code.
 ```bash
 /path/to/UnrealEngine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh -project="/path/to/RoveSoSimulator/RoveSoSimulator.uproject" -game
 ```
+**Step A-1: Setup Intellisense**
+If you are using VSCode or a derived editor (VSCodium, etc.) these steps will enable Intellisense.
+```bash
+/path/to/UnrealEngine/Engine/Build/BatchFiles/Linux/GenerateProjectFiles.sh -project="/path/to/RoveSoSimulator/RoveSoSimulator.uproject" -vscode
+cd /path/to/RoveSoSimulator
+link .vscode/compileCommands_RoveSoSimulator.json compile_commands.json
+```
+Get the Clangd extension for your editor and disable the Microsoft C++ Extension if its installed. Open the `RoveSoSimulator.code-workspace` file with your editor and the Clangd extension should automatically begin scanning headers once you open a source file. 
 
 **Step B: Compile (Make)**
 Compiles the Editor binaries for the project.
