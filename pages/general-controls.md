@@ -59,19 +59,19 @@ This is the page for controlling the rover.
 | t | | Teleop toggle | Off by default, switches between manual+arm and autonomy+autohead | 
 | j | | Set Spawnpoint | Reference vvvv . Set in a fairly clear, flat area, or it may not respawn you in the exact location |
 | h | | Teleport to Spawnpoint | Reference ^^^^ . Some variance in exact teleport, especially with obstructions |
-| p | | Toggle Pointcloud Visibility | |
-| l | | Clear path line | Its an L. |
-| f | | Flip Rover |
-| r | | Reset Rover |
-| space | | Reset/Flip Rover |
+| p | | Toggle Pointcloud Visibility ||
+| l | | Clear path line | Its an L. ||
+| f | | Flip Rover ||
+| r | | Reset Rover ||
+| space | | Reset/Flip Rover ||
 
 Soon to be reorganized menus;
 | Use | Key(s) | Notes |
 |---|---|---|
-| basestation | b | broke and fixed? today 2/3/2025. May stay as a keybind |
-| multiplayer | m | nonfunctional as of at least 2/3/2026 |
+| basestation | b | broke and fixed? today 2.3.2025. May stay as a keybind |
+| multiplayer | m | nonfunctional as of at least 2.3.2026 |
 | scene menu | enter | weather effects, rendering options, etc |
-| level options | n | |
+| level options | n ||
 
 *currently no controller options
 ### Controlling the Arm
