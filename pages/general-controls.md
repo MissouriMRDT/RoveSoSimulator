@@ -42,7 +42,7 @@ m - multiplayer (nonfunctional 2/3/2026)
 enter - scene menu (whether effects)
 
 ## Controlling the Arm
-![arm diagram](../assets/images/armDiagram.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)
+![arm diagram](../assets/images/armDiagramPieces.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)
 
 Switching to the arm currently involves toggling teleop (T) so the rover is in manual drive, which should also reveal and activate the arm, then press - or + to take control. Pressing + or - again will swap back. Will later be switched to a specific number.
 *\*Also, pressing +/- the first time you start the game doesn't trigger the swap, for some reason.*
