@@ -65,7 +65,6 @@ This is the page for controlling the rover.
 | r | | Reset Rover |
 | space | | Reset/Flip Rover |
 
-\n
 Soon to be reorganized menus;
 | Use | Key(s) | Notes |
 |---|---|---|
