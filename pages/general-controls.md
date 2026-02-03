@@ -66,6 +66,7 @@ This is the page for controlling the rover.
 | space | | Reset/Flip Rover ||
 
 Soon to be reorganized menus;
+
 | Use | Key(s) | Notes |
 |---|---|---|
 | basestation | b | broke and fixed? today 2.3.2025. May stay as a keybind |
