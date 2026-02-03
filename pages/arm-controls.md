@@ -29,5 +29,3 @@ Additionally, for use with only a keyboard, the following bindings were placed;
 + Solenoid - y-t (out-in; Pull the center line of T away from the rest to make Y)
 + Lasers - g-h (g for li***g***ht, h for hide)
 + Camera Switch - \[-\]
-
-The Rover reveals the arm when TeleOp (t) is enabled (autonomy is disabled). Pressing U will then switch control to the arm. 
