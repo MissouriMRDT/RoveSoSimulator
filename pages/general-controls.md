@@ -69,6 +69,6 @@ Additionally, for use with only a keyboard, the following bindings were placed;
 + Gripper Open-close; v-c (c to close, v shape when open)
 + Solenoid - y-t (out-in; Pull the center line of T away from the rest to make Y)
 + Lasers - g-h (g for li***g***ht, h for hide)
-+ Camera Switch - \[-\]
++ Camera Switch - "\["-"\]"
 
 *\*there may also be a level editor...or maybe thats in scene menu*
