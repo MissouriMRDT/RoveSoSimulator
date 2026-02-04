@@ -2,7 +2,8 @@ title: RoveSoSimulator
 description: Autonomous Rover Testing Simulator in Unreal Engine 5
 
 url: "https://docs.themrdt.org"
-baseurl: "/RoveSoSimulator"
+baseurl: ""
+baseSubDir: "/RoveSoSimulator"
 
 remote_theme: "godalming123/minimal"
 plugins:

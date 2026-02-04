@@ -1,23 +1,24 @@
 <ul>
   {% for item in site.navigation %}
-    {% assign item_url = item.link | relative_url %}
-
+    {% assign href = item.link | relative_url %}
     <li>
-      {% if page.url == item_url %}
+      {% if page.url == item.link %}
         <strong>{{ item.name }}</strong>
       {% else %}
-        <a href="{{ item_url }}">{{ item.name }}</a>
+        <a href="{{ href }}">{{ item.name }}</a>
       {% endif %}
 
       {% if page.url contains item.link and item.link != '/' %}
         <ul>
           {% for subpage in site.pages %}
-            {% if subpage.url contains item.link and subpage.url != item_url %}
+            {% if subpage.url contains item.link and subpage.url != item.link %}
               <li>
                 {% if page.url == subpage.url %}
                   <strong>{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</strong>
                 {% else %}
-                  <a href="{{ subpage.url }}">{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</a>
+                  <a href="{{ subpage.url | relative_url }}">
+                    {{ subpage.nav_title | default: subpage.title | default: subpage.basename }}
+                  </a>
                 {% endif %}
               </li>
             {% endif %}
