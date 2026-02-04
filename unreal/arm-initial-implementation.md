@@ -4,7 +4,7 @@ title: Arm Implementation
 
 Initial Arm Development and Implementation Process
 # Under Development
-![arm diagram](../assets/images/armDiagram.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)
+![arm diagram](../assets/images/armDiagramPieces.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)
 ## Overview
 This Page discusses the setup for the arm, with a focus on how it works but not so much how to remake it, as future iterations will build off whats there, and this is the first arm. 
 1. Skeletal Mesh
