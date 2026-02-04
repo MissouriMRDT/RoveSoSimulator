@@ -12,17 +12,17 @@ plugins:
 # IMPORTANT: tells jekyll-github-metadata what repo this is (so you don’t need env hacks)
 repository: "MissouriMRDT/RoveSoSimulator"  # :contentReference[oaicite:0]{index=0}
 
-navigation:
-  - link: "/"
-    name: "Home"
-  - link: "/setup/"
-    name: "Getting Started"
-  - link: "/documentation/"
-    name: "Documentation"
-  - link: "/simulator-use/"
-    name: "Using RoveSoSimulator"
-  - link: "/unreal/"
-    name: "Unreal"
+# navigation:
+#   - link: "/"
+#     name: "Home"
+#   - link: "/setup/"
+#     name: "Getting Started"
+#   - link: "/documentation/"
+#     name: "Documentation"
+#   - link: "/simulator-use/"
+#     name: "Using RoveSoSimulator"
+#   - link: "/unreal/"
+#     name: "Unreal"
 
 defaults:
   - scope:
