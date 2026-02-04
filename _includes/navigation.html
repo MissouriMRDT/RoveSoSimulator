@@ -1,94 +1,11 @@
-{%- comment -%}
-  navigation.html (readable version)
-
-  Requirement:
-  - Every href must begin with "/RoveSoSimulator"
-
-  Behavior:
-  - Renders site.navigation from _config.yml
-  - Highlights the active item
-  - (Optional) Shows a subnav for pages under the active section
-{%- endcomment -%}
-
-{%- assign PREFIX = "/RoveSoSimulator" -%}
-{%- assign current = page.url | replace: "index.html", "" -%}
-
-{%- comment -%}
-  Ensure a path starts with "/" and does NOT already contain the prefix.
-{%- endcomment -%}
-{%- capture _noop -%}{%- endcapture -%}
-
-<nav class="site-nav" aria-label="Primary navigation">
-  <ul class="site-nav__list">
-    {%- for item in site.navigation -%}
-      {%- assign path = item.link | default: "/" -%}
-      {%- assign path = path | replace: "index.html", "" -%}
-      {%- if path == "" -%}{%- assign path = "/" -%}{%- endif -%}
-
-      {%- comment -%}Build the final href (always prefixed){%- endcomment -%}
-      {%- if path == "/" -%}
-        {%- assign href = PREFIX | append: "/" -%}
-      {%- elsif path contains PREFIX -%}
-        {%- assign href = path -%}
-      {%- else -%}
-        {%- assign href = PREFIX | append: path -%}
-      {%- endif -%}
-
-      {%- comment -%}Active item detection (page.url does not include baseurl){%- endcomment -%}
-      {%- assign is_home = (path == "/") -%}
-      {%- assign active = false -%}
-      {%- if is_home and current == "/" -%}
-        {%- assign active = true -%}
-      {%- elsif is_home == false and current contains path -%}
-        {%- assign active = true -%}
-      {%- endif -%}
-
-      <li class="site-nav__item">
-        {%- if active -%}
-          <strong class="site-nav__link site-nav__link--active" aria-current="page">
-            {{ item.name }}
-          </strong>
-        {%- else -%}
-          <a class="site-nav__link" href="{{ href }}">{{ item.name }}</a>
-        {%- endif -%}
-
-        {%- comment -%}
-          Subnav: show pages whose URL is under this section path.
-          Example: if path == "/setup/", include pages with URLs containing "/setup/".
-        {%- endcomment -%}
-        {%- if active and is_home == false -%}
-          {%- assign section = path -%}
-          {%- assign subpages = site.pages
-            | where_exp: "p", "p.url and p.url != section and p.url contains section" -%}
-
-          {%- if subpages and subpages.size > 0 -%}
-            <ul class="site-nav__sublist" aria-label="{{ item.name }} pages">
-              {%- for p in subpages -%}
-                {%- assign p_url = p.url | replace: "index.html", "" -%}
-                {%- assign p_title = p.nav_title | default: p.title | default: p.basename | default: p_url -%}
-                {%- assign p_active = (current == p_url) -%}
-
-                {%- comment -%}Prefix subpage href the same way{%- endcomment -%}
-                {%- if p_url contains PREFIX -%}
-                  {%- assign p_href = p_url -%}
-                {%- else -%}
-                  {%- assign p_href = PREFIX | append: p_url -%}
-                {%- endif -%}
-
-                <li class="site-nav__subitem">
-                  {%- if p_active -%}
-                    <strong class="site-nav__sublink site-nav__sublink--active" aria-current="page">
-                      {{ p_title }}
-                    </strong>
-                  {%- else -%}
-                    <a class="site-nav__sublink" href="{{ p_href }}">{{ p_title }}</a>
-                  {%- endif -%}
-                </li>
-              {%- endfor -%}
-            </ul>
-          {%- endif -%}
-        {%- endif -%}
-      </li>
-    {%- endfor -%}
-  </ul>
-</nav>
+<ul>
+	{% for item in site.navigation %}
+		<li>
+			{% if page.url == item.link %}
+				<strong>{{ item.name }}</strong>
+			{% else %}
+				<a href="{{ item.link }}">{{ item.name }}</a>
+			{% endif %}
+		</li>
+  {% endfor %}
+</ul>
