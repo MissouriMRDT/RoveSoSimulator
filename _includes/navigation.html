@@ -3,19 +3,23 @@
 		<li>
 			{% if page.url == item.link %}
 				<strong>{{ item.name }}</strong>
-				{% if page.url != '/' %}
-					{% for subpage in site.pages %}
-						<ul>
-							{% if subpage.url contains page.url and subpage.url != page.url %}
-								<li>
-									<a href="{{ subpage.path }}">{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</a>
-								</li>
-							{% endif %}
-						</ul>
-					{% endfor %}
-				{% endif %}
 			{% else %}
 				<a href="{{ item.link }}">{{ item.name }}</a>
+			{% endif %}
+			{% if page.url contains item.link and item.link != '/' %}
+				<ul>
+					{% for subpage in site.pages %}
+						{% if subpage.url contains item.link and subpage.url != item.link %}
+							<li>
+								{% if page.url == subpage.url %}
+									<strong>{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</strong>
+								{% else %}
+									<a href="{{ subpage.url }}">{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</a>
+								{% endif %}
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
 			{% endif %}
 		</li>
   {% endfor %}

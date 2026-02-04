@@ -8,19 +8,19 @@ logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
 navigation:
   - link: "/"
     name: "Home"
-  - link: "/setup/"
+  - link: "/setup"
     name: "Getting Started"
-  - link: "/documentation/"
+  - link: "/documentation"
     name: "Documentation"
-  - link: "/simulator-use/"
+  - link: "/simulator-use"
     name: "Using RoveSoSimulator"
-  - link: "/unreal/"
+  - link: "/unreal"
     name: "Unreal"
 defaults:
   - scope:
       path: "pages"
     values:
-      permalink: /:basename/
+      permalink: /:basename
   - scope:
       path: "" # an empty string here means all files in the project
     values:
