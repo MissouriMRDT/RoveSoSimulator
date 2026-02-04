@@ -2,35 +2,31 @@ title: RoveSoSimulator
 description: Autonomous Rover Testing Simulator in Unreal Engine 5
 
 url: "https://docs.themrdt.org"
-baseurl: ""
-baseSubDir: "/RoveSoSimulator"
+baseurl: "/RoveSoSimulator"
 
 remote_theme: "godalming123/minimal"
 plugins:
   - jekyll-remote-theme
-incremental: true
 
-color-scheme: "auto-default-dark"
-logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
+# IMPORTANT: tells jekyll-github-metadata what repo this is (so you don’t need env hacks)
+repository: "MissouriMRDT/RoveSoSimulator"  # :contentReference[oaicite:0]{index=0}
 
 navigation:
   - link: "/"
     name: "Home"
-  - link: "/setup"
+  - link: "/setup/"
     name: "Getting Started"
-  - link: "/documentation"
+  - link: "/documentation/"
     name: "Documentation"
-  - link: "/simulator-use"
+  - link: "/simulator-use/"
     name: "Using RoveSoSimulator"
-  - link: "/unreal"
+  - link: "/unreal/"
     name: "Unreal"
-  
+
 defaults:
   - scope:
-      path: "RoveSoSimulator/pages"
-    values:
-      permalink: "/RoveSoSimulator/:basename"
-  - scope:
-      path: "" # an empty string here means all files in the project
+      path: "docs"
     values:
       layout: "default"
+      # This is the big one: trailing slash avoids redirect loops
+      permalink: /:basename/
