@@ -1,88 +1,87 @@
 {%- comment -%}
-  navigation.html
-  - Forces all links to start with /RoveSoSimulator
-  - Highlights active top-level item
-  - Shows subnav for the active section
+  navigation.html (readable version)
+
+  Requirement:
+  - Every href must begin with "/RoveSoSimulator"
+
+  Behavior:
+  - Renders site.navigation from _config.yml
+  - Highlights the active item
+  - (Optional) Shows a subnav for pages under the active section
 {%- endcomment -%}
 
-{%- assign forced_prefix = "/RoveSoSimulator" -%}
-{%- assign current_url = page.url | replace: "index.html", "" -%}
+{%- assign PREFIX = "/RoveSoSimulator" -%}
+{%- assign current = page.url | replace: "index.html", "" -%}
 
 {%- comment -%}
-  Helper: build an href as /RoveSoSimulator + path (path should start with /)
-  and prevent double-prefixing if someone already put /RoveSoSimulator in the path.
+  Ensure a path starts with "/" and does NOT already contain the prefix.
 {%- endcomment -%}
-{%- capture _prefix_slash -%}{{ forced_prefix }}/{{- "" -}}{%- endcapture -%}
+{%- capture _noop -%}{%- endcapture -%}
 
 <nav class="site-nav" aria-label="Primary navigation">
   <ul class="site-nav__list">
     {%- for item in site.navigation -%}
-      {%- assign raw_link = item.link | default: "/" -%}
-      {%- assign link_path = raw_link | replace: "index.html", "" -%}
+      {%- assign path = item.link | default: "/" -%}
+      {%- assign path = path | replace: "index.html", "" -%}
+      {%- if path == "" -%}{%- assign path = "/" -%}{%- endif -%}
 
-      {%- if link_path == "" -%}{%- assign link_path = "/" -%}{%- endif -%}
-
-      {%- comment -%}Compute href with forced prefix{%- endcomment -%}
-      {%- if link_path == "/" -%}
-        {%- assign item_href = forced_prefix | append: "/" -%}
-      {%- elsif link_path contains forced_prefix -%}
-        {%- assign item_href = link_path -%}
+      {%- comment -%}Build the final href (always prefixed){%- endcomment -%}
+      {%- if path == "/" -%}
+        {%- assign href = PREFIX | append: "/" -%}
+      {%- elsif path contains PREFIX -%}
+        {%- assign href = path -%}
       {%- else -%}
-        {%- assign item_href = forced_prefix | append: link_path -%}
+        {%- assign href = PREFIX | append: path -%}
       {%- endif -%}
 
-      {%- assign is_home = (link_path == "/") -%}
-
-      {%- comment -%}
-        Active logic uses page.url (no baseurl) so we compare against link_path directly.
-      {%- endcomment -%}
-      {%- assign is_active = false -%}
-      {%- if is_home and current_url == "/" -%}
-        {%- assign is_active = true -%}
-      {%- elsif is_home == false and current_url contains link_path -%}
-        {%- assign is_active = true -%}
+      {%- comment -%}Active item detection (page.url does not include baseurl){%- endcomment -%}
+      {%- assign is_home = (path == "/") -%}
+      {%- assign active = false -%}
+      {%- if is_home and current == "/" -%}
+        {%- assign active = true -%}
+      {%- elsif is_home == false and current contains path -%}
+        {%- assign active = true -%}
       {%- endif -%}
 
       <li class="site-nav__item">
-        {%- if is_active -%}
+        {%- if active -%}
           <strong class="site-nav__link site-nav__link--active" aria-current="page">
             {{ item.name }}
           </strong>
         {%- else -%}
-          <a class="site-nav__link" href="{{ item_href }}">
-            {{ item.name }}
-          </a>
+          <a class="site-nav__link" href="{{ href }}">{{ item.name }}</a>
         {%- endif -%}
 
-        {%- comment -%}Subnav for the active section{%- endcomment -%}
-        {%- if is_active and is_home == false -%}
-          {%- assign section_prefix = link_path -%}
+        {%- comment -%}
+          Subnav: show pages whose URL is under this section path.
+          Example: if path == "/setup/", include pages with URLs containing "/setup/".
+        {%- endcomment -%}
+        {%- if active and is_home == false -%}
+          {%- assign section = path -%}
           {%- assign subpages = site.pages
-            | where_exp: "p", "p.url != nil and p.url != section_prefix and p.url contains section_prefix" -%}
+            | where_exp: "p", "p.url and p.url != section and p.url contains section" -%}
 
           {%- if subpages and subpages.size > 0 -%}
             <ul class="site-nav__sublist" aria-label="{{ item.name }} pages">
               {%- for p in subpages -%}
                 {%- assign p_url = p.url | replace: "index.html", "" -%}
-                {%- assign p_label = p.nav_title | default: p.title | default: p.basename | default: p_url -%}
-                {%- assign p_active = (current_url == p_url) -%}
+                {%- assign p_title = p.nav_title | default: p.title | default: p.basename | default: p_url -%}
+                {%- assign p_active = (current == p_url) -%}
 
-                {%- comment -%}Force prefix on subpage href{%- endcomment -%}
-                {%- if p_url contains forced_prefix -%}
+                {%- comment -%}Prefix subpage href the same way{%- endcomment -%}
+                {%- if p_url contains PREFIX -%}
                   {%- assign p_href = p_url -%}
                 {%- else -%}
-                  {%- assign p_href = forced_prefix | append: p_url -%}
+                  {%- assign p_href = PREFIX | append: p_url -%}
                 {%- endif -%}
 
                 <li class="site-nav__subitem">
                   {%- if p_active -%}
                     <strong class="site-nav__sublink site-nav__sublink--active" aria-current="page">
-                      {{ p_label }}
+                      {{ p_title }}
                     </strong>
                   {%- else -%}
-                    <a class="site-nav__sublink" href="{{ p_href }}">
-                      {{ p_label }}
-                    </a>
+                    <a class="site-nav__sublink" href="{{ p_href }}">{{ p_title }}</a>
                   {%- endif -%}
                 </li>
               {%- endfor -%}
