@@ -4,7 +4,7 @@
 			{% if page.url == item.link %}
 				<strong>{{ item.name }}</strong>
 			{% else %}
-				<a href="/RoveSoSimulator{{ item.link }}">{{ item.name }}</a>
+				<a href="{{ item.link }}">{{ item.name }}</a>
 			{% endif %}
 			{% if page.url contains item.link and item.link != '/' %}
 				<ul>
