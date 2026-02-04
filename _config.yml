@@ -3,6 +3,7 @@ description: Autonomous Rover Testing Simulator in Unreal Engine 5
 
 url: "https://docs.themrdt.org"
 baseurl: ""
+baseSubDir: "/RoveSoSimulator"
 
 remote_theme: "godalming123/minimal"
 plugins:
@@ -26,9 +27,9 @@ navigation:
   
 defaults:
   - scope:
-      path: "pages"
+      path: "RoveSoSimulator/pages"
     values:
-      permalink: "/:basename"
+      permalink: "/RoveSoSimulator/:basename"
   - scope:
       path: "" # an empty string here means all files in the project
     values:
