@@ -21,7 +21,7 @@ title: RoveSoSimulator Setup
 
 #### Linux Dependencies:
 
-Assistance for Linux Setup: [Setup on Linux]({{ site.baseurl }}/setup/linux-setup)
+Assistance for Linux Setup: [Setup on Linux](linux-setup)
 
 - [Dotnet SDK](https://learn.microsoft.com/en-us/dotnet/core/install/linux)
 - clang and libc++
