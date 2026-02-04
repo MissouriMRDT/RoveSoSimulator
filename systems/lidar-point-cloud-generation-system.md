@@ -1,3 +1,7 @@
+---
+title: Lidar Point Cloud
+---
+
 ## **Technical Documentation: Lidar Point Cloud Generation System**
 
 **Project Goal:** To develop a robust, high-performance tool within Unreal Engine capable of generating large-scale, georeferenced lidar point clouds. The primary objective is to emulate the format and structure of real-world USGS lidar datasets to facilitate high-fidelity "Sim-to-Real" testing for robotics applications.

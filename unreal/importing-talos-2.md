@@ -1,3 +1,7 @@
+---
+title: Importing the Rover (ext.)
+---
+
 # Implementing Talos (2025), Experience 2
 This is documentation of an additional experience of implementing the Talos (2025) rover into the simulator. It was done with Hyperon 2024 and an already assembled Talos 2025 as a reference, though the latter will not be referenced in this documentation.
 

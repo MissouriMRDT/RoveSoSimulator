@@ -16,16 +16,3 @@
 <br/>
 
 Welcome to the Github Sites page of **RoveSoSimulator**, an advanced simulation environment designed to aid the Mars Rover Design Team in testing and refining autonomous navigation capabilities. Built on **Unreal Engine 5**, this cutting-edge simulator provides a realistic virtual landscape for testing various sensors, algorithms, and autonomous behaviors. It's an essential tool for validating software in an efficient, scalable, and repeatable way.
-
-## Directory
-
-- [arm-initial-implementation](pages/arm-initial-implementation.md)
-- [diversion](pages/diversion.md)
-- [documentation](pages/documentation.md)
-- [importing-and-texturing-static-meshes](pages/importing-and-texturing-static-meshes.md)
-- [importing-rover](pages/importing-rover.md)
-- [importing-talos-2](pages/importing-talos-2.md)
-- [index](pages/index.md)
-- [lidar-point-cloud-generation-system](pages/lidar-point-cloud-generation-system.md)
-- [linux-setup](pages/linux-setup.md)
-- [simulator-use](pages/simulator-use.md)

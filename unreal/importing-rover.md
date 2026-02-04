@@ -1,3 +1,7 @@
+---
+title: Importing the Rover
+---
+
 ## **Technical Documentation: Importing and Rigging the Talos2025 Rover**
 
 **Project Goal:** To import the new `Talos2025` Mars Rover 3D model into the Unreal Engine simulator, fully rig it as a drivable vehicle, and troubleshoot any issues encountered during the process. The existing `Hyperion2024` rover serves as a reference for the required components and final functionality.

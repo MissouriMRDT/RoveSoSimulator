@@ -1,3 +1,7 @@
+---
+title: Documentation
+---
+
 # 📖 Documentation
 
 Comprehensive documentation on **RoveSoSimulator** will be found here soon. This includes:

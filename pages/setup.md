@@ -1,3 +1,7 @@
+---
+title: RoveSoSimulator Setup
+---
+
 # 🎮 How to Get Started
 
 ### 1️⃣ **Install Prerequisites**

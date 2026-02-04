@@ -6,15 +6,21 @@ plugins:
 color-scheme: "auto-default-dark"
 logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
 navigation:
-  - link: "/pages/index.html"
+  - link: "/"
     name: "Home"
-  - link: "/pages/setup.html"
+  - link: "/setup/"
     name: "Getting Started"
-  - link: "/pages/documentation.html"
+  - link: "/documentation/"
     name: "Documentation"
-  - link: "/pages/simulator-use.html"
+  - link: "/simulator-use/"
     name: "Using RoveSoSimulator"
+  - link: "/unreal/"
+    name: "Unreal"
 defaults:
+  - scope:
+      path: "pages"
+    values:
+      permalink: /:basename/
   - scope:
       path: "" # an empty string here means all files in the project
     values:

@@ -1,3 +1,7 @@
+---
+title: Arm Implementation
+---
+
 Initial Arm Development and Implementation Process
 # Under Development
 ![arm diagram](../assets/images/armDiagram.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)

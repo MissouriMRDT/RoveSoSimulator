@@ -3,6 +3,17 @@
 		<li>
 			{% if page.url == item.link %}
 				<strong>{{ item.name }}</strong>
+				{% if page.url != '/' %}
+					{% for subpage in site.pages %}
+						<ul>
+							{% if subpage.url contains page.url and subpage.url != page.url %}
+								<li>
+									<a href="{{ subpage.path }}">{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</a>
+								</li>
+							{% endif %}
+						</ul>
+					{% endfor %}
+				{% endif %}
 			{% else %}
 				<a href="{{ item.link }}">{{ item.name }}</a>
 			{% endif %}

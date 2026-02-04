@@ -1,3 +1,7 @@
+---
+title: Importing Static Meshes
+---
+
 ## **Technical Documentation: Importing and Texturing PBR Static Meshes**
 
 **Project Goal:** To establish a clear, repeatable workflow for importing 3D models and their associated textures into Unreal Engine, ensuring they appear physically accurate and visually correct. This guide covers the entire pipeline, from asset preparation to final material setup.

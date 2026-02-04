@@ -1,3 +1,7 @@
+---
+title: Linux Setup
+---
+
 # RoveSoSimulator Linux Setup
 
 When attempting to setup RoveSoSimulator on Linux, it is likely that you will encounter multiple roadblocks, primarily to due with Unreal Editor's disaffinity for Linux. This guide will document known issues and workarounds, if you have a novel problem or solution please add it to this section of the docs.

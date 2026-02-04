@@ -1,3 +1,7 @@
+---
+title: Using RoveSoSimulator
+---
+
 # Using RoveSoSimulator
 
 ## Keybinds

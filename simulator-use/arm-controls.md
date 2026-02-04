@@ -1,3 +1,7 @@
+---
+title: Arm Controls
+---
+
 ## Controlling the Arm
 |++++|++++|-|\_|-|\_|-|\_|-**Construction**-|\_|-|\_|-|\_|++++|++++|
 

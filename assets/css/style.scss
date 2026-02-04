@@ -24,3 +24,7 @@ section {
 .wrapper {
   width:clamp(860px, calc(100%), 1160px);
 }
+
+li ul {
+  margin: 0px;
+}
