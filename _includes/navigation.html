@@ -4,7 +4,7 @@
 			{% if page.url == item.link %}
 				<strong>{{ item.name }}</strong>
 			{% else %}
-				<a href="{{ item.link }}">{{ item.name }}</a>
+				<a href="{{ site.baseurl }}{{ item.link }}">{{ item.name }}</a>
 			{% endif %}
 			{% if page.url contains item.link and item.link != '/' %}
 				<ul>
@@ -14,7 +14,7 @@
 								{% if page.url == subpage.url %}
 									<strong>{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</strong>
 								{% else %}
-									<a href="{{ subpage.url }}">{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</a>
+									<a href="{{ site.baseurl }}{{ subpage.url }}">{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</a>
 								{% endif %}
 							</li>
 						{% endif %}

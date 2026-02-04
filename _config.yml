@@ -6,6 +6,7 @@ url: "https://docs.themrdt.org"
 remote_theme: "godalming123/minimal"
 plugins:
   - jekyll-remote-theme
+incremental: true
 
 color-scheme: "auto-default-dark"
 logo: "https://i.postimg.cc/XYtdp84Z/logo.png"
@@ -26,7 +27,7 @@ defaults:
   - scope:
       path: "pages"
     values:
-      permalink: /:basename
+      permalink: "/:basename"
   - scope:
       path: "" # an empty string here means all files in the project
     values:
