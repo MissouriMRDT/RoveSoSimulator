@@ -18,6 +18,8 @@ These challenges prompted us to find an alternative. We ultimately chose **Diver
 
 This tutorial will walk you through the essential features of the Diversion desktop client that you will use for the RoveSoSimulator project.
 
+**Note**: Diversion Desktop is only available for Windows, Linux users must use the Diversion cli instead via the `dv` command
+
 ### The Diversion Hub
 
 When you first open Diversion, you will see the main hub. This is your starting point for accessing all your projects.

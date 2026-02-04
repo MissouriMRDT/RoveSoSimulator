@@ -39,7 +39,7 @@ The **RoveSoSimulator** empowers developers and engineers on the Mars Rover Desi
 
 ## 📜 License
 
-RoveSoSimulator is licensed under the MIT License. See [LICENSE](RoveSoSimulator/LICENSE) for more information.
+RoveSoSimulator is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## 💬 Contact
 

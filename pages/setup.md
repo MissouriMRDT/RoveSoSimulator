@@ -4,7 +4,7 @@ title: RoveSoSimulator Setup
 
 # 🎮 How to Get Started
 
-### 1️⃣ **Install Prerequisites**
+### **Install Prerequisites**
 #### Universal Dependencies:
 
 - [Unreal Engine 5](https://www.unrealengine.com/)
@@ -33,7 +33,7 @@ Assistance for Linux Setup: [Setup on Linux](linux-setup)
 	```
 	
 
-### 2️⃣ **Clone the Repository**
+### **Clone the Repository**
 
 - Next you will want to install `Diversion` here: [Diversion](https://www.diversion.dev/). Create an account with whatever email you want to use, and install Diversion following the instructions for your OS. After you have created an account, message the Simulation Lead on Discord that you would like to help contribute as well as your email, and we will get you added to the repository.
 
@@ -44,11 +44,11 @@ Assistance for Linux Setup: [Setup on Linux](linux-setup)
 - After everything is downloaded, you should be able to open `RoveSoSimulator` on your install of Unreal Engine. 
 
 
-### 3️⃣ **Troubleshooting Cloning** 
+### **Troubleshooting Cloning** 
 
 - Before moving on to running the simulation, however, you need to ensure that there are no errors when opening the sim. If you do encounter an error, you can see the source of it in your local folders at `RoveSoSimulator/Saved/Logs/RoveSoSimulator.log`. If you have any errors related to `RoveComm`, it can be often fixed by going to `RoveSoSimulator/Source/ThirdParty/`, deleting the `RoveComm_CPP` folder, and recloning it in the `/ThirdParty` folder using `git clone --recurse-submodules https://github.com/MissouriMRDT/RoveComm_CPP.git`. If you encounter further issues, let the Simulation Lead know, and we can take a look into the problem.
 
-### 4️⃣ **Setting up Sim Mode on Autonomy_Software**
+### **Setting up Sim Mode on Autonomy_Software**
 
 - Now that you are able to open and run the simulator, you'll need to be able run the Autonomy codebase inside of it. After you have initially followed all the steps to clone Autonomy_Software (see above in Pre Reqs) you will have to configure a few things. First, navigate to `src/AutonomyConstants.cpp`. Find the line that initializes `const std::string SIM_IP_ADDRESS` and set the IP to your own IP. You can find your IP by entering `ipconfig` into your terminal if you are on Windows and `ifconfig` on Linux. We utilize IPv4. If you are on Windows, the IP you should plug in will typically start with 192.168.x.x and will be listed with a default gateway, and on Linux, the IP the adapter will be named something like eth0 or wlan0.
 -  You will also want to go into `CMakeLists.txt` and on the line that has `option(BUILD_SIM_MODE "Enable Simulation Mode" OFF)` change OFF to ON.
@@ -63,7 +63,7 @@ Assistance for Linux Setup: [Setup on Linux](linux-setup)
 - You should now have the build folder made to run the simulator! To run autonomy in the sim, follow the steps in the next section.
 
 
-### 5️⃣ **Run the Simulation**
+### **Run the Simulation**
 To start the simulator, follow these steps:
 
 - Open the project in **Unreal Engine 5**.
@@ -78,5 +78,5 @@ You should now be able to play it normally! To run autonomy, follow the steps  b
 
 If you encounter any issues, let the Simulation Lead know!
 
-### 6️⃣ **Logging & Data Analysis**
+### **Logging & Data Analysis**
 Results and logs can be found in the `/logs` directory. To analyze data, refer to the provided scripts in the `/analysis` folder.
