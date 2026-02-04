@@ -5,7 +5,7 @@
       {% if page.url == item.link %}
         <strong>{{ item.name }}</strong>
       {% else %}
-        <a href="{{ href }}">{{ item.name }}</a>
+        <a href="/RoveSoSimulator{{ href }}">{{ item.name }}</a>
       {% endif %}
 
       {% if page.url contains item.link and item.link != '/' %}
@@ -16,7 +16,7 @@
                 {% if page.url == subpage.url %}
                   <strong>{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</strong>
                 {% else %}
-                  <a href="{{ subpage.url | relative_url }}">
+                  <a href="/RoveSoSimulator{{ subpage.url | relative_url }}">
                     {{ subpage.nav_title | default: subpage.title | default: subpage.basename }}
                   </a>
                 {% endif %}
