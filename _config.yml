@@ -30,4 +30,4 @@ defaults:
     values:
       layout: "default"
       # This is the big one: trailing slash avoids redirect loops
-      permalink: /:basename/
+      permalink: /RoveSoSimulator/:basename/
