@@ -27,7 +27,7 @@ When you first open Diversion, you will see the main hub. This is your starting 
 *   **Local Workspaces:** This section shows repositories that you already have on your computer. You can quickly open a project from here. The **Sync** toggle allows you to enable or disable automatic syncing of changes.
 *   **All Repositories:** This lists all repositories available to you from your organization. If you are setting up the simulator for the first time, you would find `RoveSoSimulator` here and click **Clone Repo** to download it to your machine.
 
-![Diversion Hub](../assets/images/Screenshot%202025-10-17%20172857.png)
+![Diversion Hub](../../assets/images/Screenshot%202025-10-17%20172857.png)
 
 ### The Workspace View
 
@@ -37,7 +37,7 @@ Once you open the `RoveSoSimulator` workspace, you will see the main interface. 
 *   **Latest Commits (Center/Right):** This panel shows a history of the most recent commits made to the repository, giving you a quick overview of recent project updates.
 *   **Commit Message (Bottom Left):** This is where you will describe the changes you've made before committing them.
 
-![Main Workspace](../assets/images/Screenshot%202025-10-17%20173018.png)
+![Main Workspace](../../assets/images/Screenshot%202025-10-17%20173018.png)
 
 ### Committing Changes
 
@@ -47,7 +47,7 @@ When you have made changes to the simulator, you need to "commit" them to save t
 2.  **Write a Commit Message:** In the "Type your commit message here" box at the bottom, write a clear and concise message describing what you changed (e.g., "Added a new LIDAR sensor model" or "Fixed the physics on the Rock Hammer").
 3.  **Commit:** Click the blue **Commit** button to finalize. This saves a snapshot of your selected changes to your local version of the repository.
 
-![Committing Changes](../assets/images/Screenshot%202025-10-17%20173207.png)
+![Committing Changes](../../assets/images/Screenshot%202025-10-17%20173207.png)
 
 ### Working with Branches
 
@@ -56,7 +56,7 @@ Branches are used to work on new features or fixes without affecting the main, s
 1.  **View and Switch Branches:** At the top of the screen, click on the current workspace name (e.g., "Luke's Unreal Engine Playground"). This will open the branch management view.
 2.  **Switching:** You can see a list of all available branches. To switch to a different one, hover over it and click **Switch to branch**.
 
-![Viewing and Switching Branches](../assets/images/Screenshot%202025-10-17%20173112.png)
+![Viewing and Switching Branches](../../assets/images/Screenshot%202025-10-17%20173112.png)
 
 ### Handling Pending Changes When Switching Branches
 
@@ -66,11 +66,11 @@ If you try to switch to another branch while you have uncommitted changes, Diver
 *   **Save changes for later use:** This "shelves" your changes, saving them temporarily so you can re-apply them later. This is useful if the changes are not ready to be committed.
 *   **Discard changes:** This will permanently delete all uncommitted changes. **Use this with caution!**
 
-![Handling Pending Changes](../assets/images/Screenshot%202025-10-17%20173302.png)
+![Handling Pending Changes](../../assets/images/Screenshot%202025-10-17%20173302.png)
 
 If you have previously "shelved" changes on the branch you are switching *to*, Diversion will ask if you want to restore them. You can either restore them automatically or skip for now.
 
-![Restoring Shelved Changes](../assets/images/Screenshot%202025-10-17%20173324.png)
+![Restoring Shelved Changes](../../assets/images/Screenshot%202025-10-17%20173324.png)
 
 ### Syncing and Viewing History
 
@@ -78,11 +78,11 @@ Your local commits are not sent to the shared repository until you **sync**.
 
 *   **Sync Status:** The top right of the workspace shows the sync status. "All changes synced" means your local version is up-to-date with the remote server. If you have committed changes locally, it will prompt you to sync them. The image below shows the workspace is fully synced after switching to the `main` branch.
 
-![Synced History View](../assets/images/Screenshot%202025-10-17%20173428.png)
+![Synced History View](../../assets/images/Screenshot%202025-10-17%20173428.png)
 
 *   **Syncing in Progress:** When downloading or uploading changes, the status bar will show you the progress.
 
-![Syncing in Progress](../assets/images/Screenshot%202025-10-17%20173531.png)
+![Syncing in Progress](../../assets/images/Screenshot%202025-10-17%20173531.png)
 
 ### Visualizing the Commit Tree
 
@@ -92,7 +92,7 @@ For a more advanced view, you can see the commit history as a branching graph. T
 *   **Understanding the View:** The image shows the `main` branch and a separate feature branch ("Luke's Unreal Engine Playground"). Each circle represents a commit. This visual makes it easy to see the relationship between different branches.
 *   **Repo Options:** From this view, you can also access repository options like inviting collaborators or managing sync settings.
 
-![Commit Tree](../assets/images/Screenshot%202025-10-17%20173627.png)
+![Commit Tree](../../assets/images/Screenshot%202025-10-17%20173627.png)
 
 ## Diversion Best Practices
 

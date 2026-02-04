@@ -19,7 +19,7 @@ To achieve the highest fidelity, we opted for a **Grid-Based Ray Tracing** metho
 **1.2: User Interface: The Editor Utility Widget**
 While the core logic is C++, the user interface is a Blueprint **Editor Utility Widget** (`EUW_LidarScanner`). This provides a friendly, visual front-end that allows any team member (not just programmers) to use the tool. The Blueprint's role is simply to gather user inputs and pass them to the C++ backend.
 
-![EUT Widget](../assets/images/Screenshot%202025-10-18%20154328.png)
+![EUT Widget](../../assets/images/Screenshot%202025-10-18%20154328.png)
 
 **1.3: The Memory Challenge: A Chunking (Tiling) System**
 Our initial prototype attempted to generate and store all points in a single large array in memory. This approach failed due to extreme memory consumption (roughly 1GB of RAM per million points), making it impossible to scan the full map.
@@ -71,7 +71,7 @@ This guide outlines the complete process for a user to generate a point cloud.
 1.  **Place GeoReferencing Actor:** Ensure a properly configured `GeoReferencingSystem` actor is present in the level. The **Projected CRS** and **Origin Location** must be set correctly.
 2.  **Place Marker Actors:** Add two `Empty Actor` objects to the level. Position them at opposite corners of the desired total scan area.
 
-![Full Widget](../assets/images/Screenshot%202025-10-18%20154506.png)
+![Full Widget](../../assets/images/Screenshot%202025-10-18%20154506.png)
 
 **Step 3.2: Configure and Run the Scanner Tool**
 1.  **Launch the Widget:** In the Content Browser, right-click the `EUW_LidarScanner` asset and select `Run Editor Utility Widget`.

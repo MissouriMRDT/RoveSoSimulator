@@ -5,7 +5,7 @@ title: Arm Controls
 ## Controlling the Arm
 |++++|++++|-|\_|-|\_|-|\_|-**Construction**-|\_|-|\_|-|\_|++++|++++|
 
-![arm diagram](../assets/images/armDiagram.png) ![arm diagram with rotations](../assets/images/armDiagramRot.png)
+![arm diagram](../../assets/images/armDiagram.png) ![arm diagram with rotations](../../assets/images/armDiagramRot.png)
 
 Switching to the arm currently involves toggling teleop (T) so the rover is in manual drive, which should also reveal and activate the arm, then press - or + to take control. Pressing + or - again will swap back. Will later be switched to a specific number.
 *\*Also, pressing +/- the first time you start the game doesn't trigger the swap, for some reason.*

@@ -1,10 +1,28 @@
 <ul>
 	{% for item in site.navigation %}
 		<li>
-			{% if page.url == item.link %}
+			{% capture correctItemLink %}{{ site.baseurl | append: item.link }}{% endcapture %}
+			{% capture correctPageURL %}{{ site.baseurl | append: page.url }}{% endcapture %}
+			{% if correctPageURL == correctItemLink %}
 				<strong>{{ item.name }}</strong>
 			{% else %}
-				<a href="{{ item.link | relative_url }}">{{ item.name }}</a>
+				<a href="{{ correctItemLink }}">{{ item.name }}</a>
+			{% endif %}
+			{% if correctPageURL contains correctItemLink and item.link != '/' %}
+				<ul>
+					{% for subpage in site.docs %}
+						{% capture correctSubpageLink %}{{ site.baseurl | append: subpage.url }}{% endcapture %}
+						{% if correctSubpageLink contains correctItemLink and correctSubpageLink != correctItemLink %}
+							<li>
+								{% if correctPageURL == correctSubpageLink %}
+									<strong>{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</strong>
+								{% else %}
+									<a href="{{ correctSubpageLink }}">{{ subpage.nav_title | default: subpage.title | default: subpage.basename }}</a>
+								{% endif %}
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
 			{% endif %}
 		</li>
   {% endfor %}

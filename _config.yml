@@ -2,7 +2,6 @@ title: RoveSoSimulator
 description: Autonomous Rover Testing Simulator in Unreal Engine 5
 
 url: "https://docs.themrdt.org"
-baseurl: "/RoveSoSimulator"
 
 remote_theme: "godalming123/minimal"
 plugins:
@@ -11,20 +10,29 @@ plugins:
 repository: "MissouriMRDT/RoveSoSimulator"
 
 navigation:
-  - link: "/RoveSoSimulator/"
+  - link: "/"
     name: "Home"
-  - link: "/RoveSoSimulator/setup"
+  - link: "/setup/"
     name: "Getting Started"
-  - link: "/RoveSoSimulator/documentation"
+  - link: "/documentation/"
     name: "Documentation"
-  - link: "/RoveSoSimulator/simulator-use"
+  - link: "/simulator-use/"
     name: "Using RoveSoSimulator"
-  - link: "/RoveSoSimulator/unreal"
+  - link: "/unreal/"
     name: "Unreal"
 
+collections:
+  docs:
+    output: true
+    permalink: /:path/
+
 defaults:
-  - scope:
-      path: "docs"
+  - scope: 
+      path: "_docs"
     values:
       layout: "default"
-      permalink: /:basename/
+
+  - scope:
+      path: "_docs/pages"
+    values:
+      permalink: /:name/
