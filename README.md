@@ -1,5 +1,5 @@
 <div align="center">
-	<a href="https://missourimrdt.github.io/RoveSoSimulator/">
+	<a href="https://docs.themrdt.org/RoveSoSimulator/">
 		<img width="125" src="https://i.postimg.cc/XYtdp84Z/logo.png" alt="Mars Rover Design Team Logo">
 	<h1>RoveSoSimulator</h1></a>
 	<p><b>Autonomous Testing Simulator in Unreal Engine 5</b></p>
