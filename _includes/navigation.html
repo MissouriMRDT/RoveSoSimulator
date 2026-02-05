@@ -1,10 +1,4 @@
 <ul>
-	<li>
-		{{ site.baseurl }}
-	</li>
-	<li>
-		{{ page.url }}
-	</li>
 	{% for item in site.navigation %}
 		<li>
 			{% capture correctItemLink %}{{ site.baseurl | append: item.link }}{% endcapture %}
