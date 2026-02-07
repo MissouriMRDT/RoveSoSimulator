@@ -21,6 +21,8 @@ navigation:
     name: "Using RoveSoSimulator"
   - link: "/unreal/"
     name: "Unreal"
+  - link: "/systems/"
+    name: "Systems"
 
 collections:
   docs:
