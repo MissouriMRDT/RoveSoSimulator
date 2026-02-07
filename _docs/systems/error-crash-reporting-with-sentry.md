@@ -1,3 +1,7 @@
+---
+title: Sentry
+---
+
 # **Sentry & Crash Reporting System**
 
 ## **1. Purpose**
