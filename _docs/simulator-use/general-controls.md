@@ -1,3 +1,6 @@
+---
+title: Controls
+---
 ## Controls
 This is the page for all the controls for using RoveSoSimulator.
 
