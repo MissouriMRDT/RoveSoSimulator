@@ -1,3 +1,6 @@
+---
+title: Concepts of Plans
+---
 
 # **Project Knowledge Base: Attempted & Concept Initiatives**
 
