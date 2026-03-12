@@ -1,3 +1,7 @@
+---
+title: Athena Arm 
+---
+
 ## Athena Arm Implementation -- Incomplete
 This is the documentation for the addition of the 2026 Athena Arm into the Simulator. This is the first arm to be *converted*, e.g. the original arm template has been created with another arm, but this is the first new arm.
 
