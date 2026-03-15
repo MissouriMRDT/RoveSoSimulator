@@ -50,9 +50,12 @@ Weight-painted mesh. Note; xAxis bone is the "mount"; the x-axis itself is not b
 
 Physics asset assigned. Control Rig assigned as default animating rig (likely no effect).
 
-### Control Rig
+### Control Rig (Redone)
 
 Reassinged Preview Mesh and refreshed skeleton (in "rig hierarchy", right-click on the most-parent bone (probably root), select "refresh" and pick the desired skeleton mesh). There were extra bones in mine; I did not get rid of them because it gave a warning, but it theorectically wouldn't matter.
+
+#### Inital
+Everything up until "Change" (heading 4) is from by inital changes, *many* of which are irrevelant because of me switching to feeding values directly into the control rig (further detailed in "Change"). 
 
 Flipped xAxis limits and default to y axis. Measured total length of x-axis in Blender from two mirror-opposing points ("same thing but opposite side", not sure the term), then subtracted *twice* the distance between the center of the mount and the closer point that was previously measured (on the side the x-axis was on...weird to phrase. point is, arm was in a position that I could measure it). Measurements came out to 34.6538 cm. Cut in half for initial position.  
 
@@ -65,6 +68,13 @@ Worth noting; you probably want to set the default bone positions to zero, *then
 Wrist did need a limit this time around; only done in blueprint as of me writing this.
 
 Gripper was offset on mesh; shifted 32 degrees, and then decreased by 3 (to 29) to make the grippers not intersect each other.
+
+#### Change
+Made "AlterBone" function, which takes in an x, y, or z value in the vector, a bone name, a boolean on whether to rotate or transform, and an execution feed. Uses quaternions to rotate the bones, and does not apply any limits. Also, **does not use controls,** so they no longer work.
+
+Defined a variable for each joint (J1-J6), plus the gripper open-close and the newly renamed "poker." May also be one variable per control.
+
+Each variable feeds into an AlterBone functionality. Default values for each variable defines the initial position of the arm (inital position and rotation of each joint).
 
 ### Blueprint
 Reassigned skeletal mesh and control rig components. 
