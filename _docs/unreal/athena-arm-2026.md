@@ -83,7 +83,9 @@ Refreshed limits, including adding one for the wrist. Solenoid renamed to "poker
 
 Make sure the axiis on the limits are also refreshed (both rate and max and min). Additionally, the negatives and positives of the contorl rig will not necessarily match that of the blueprint.
 
-Lasers repositioned to where I think they are supposed to be.
+Due to problems with gimbal lock, a new function was made; "New bone control." New bone control returns the parameter value passed in increased by the rate (value per second), returning the value clamped between the max and min if "Limit?" is checked. Control over what axis the float applies too happens in the control rig. 
+
+Lasers repositioned to where I think they are supposed to be (and rotated for location).
 
 +++++++++
 ### Source Files
