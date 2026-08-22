@@ -2,9 +2,10 @@ name: Bug Report
 description: Report a bug or issue in the project.
 title: "[Bug] "
 projects:
-  - URC 2025
+  - URC 2027
 labels: 
-  - bug
+  - Bug
+type: Bug
 body:
   - type: markdown
     attributes:
@@ -25,7 +26,7 @@ body:
     attributes:
       value: |
         ### **Steps to Reproduce**
-        Steps to reproduce the behavior.
+        Steps to reproduce the behavior; if you dont know how to reproduce the issue, leave blank.
 
   - type: textarea
     id: steps
@@ -34,7 +35,7 @@ body:
       description: Provide a step-by-step guide to reproduce the bug.
       placeholder: "1. Go to '...'\n2. Click on '...'\n3. Scroll to '...'\n4. See error"
     validations:
-      required: true
+      required: false
 
   - type: markdown
     attributes:
@@ -95,10 +96,23 @@ body:
       description: Select your environment.
       multiple: true
       options:
-        - Jammy
-        - JetPack
+        - Linux - Steam Install
+        - Linux - Other Install
+        - Linux - Editor
+        - Windows 10/11 - Steam Install
+        - Windows 10/11 - Other Install
+        - Windows 10/11 - Editor
     validations:
       required: true
+
+  - type: input
+    id: environment_details
+    attributes:
+      label: Extra Enviroment Details
+      description: Provide any extra enviroment details such as your exact OS version, X11/Wayland, Window Manager, etc...
+      placeholder: DE/WM details; CachyOS with Hyprland...
+    validations:
+      required: false
 
   - type: input
     id: version
