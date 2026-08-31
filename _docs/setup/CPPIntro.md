@@ -33,6 +33,7 @@ To connect classes in C++ files to blueprints, Unreal needs to know what data an
   * Instantiate an FStruct: standard stack allocation (FMyStruct Data;) or standard new/delete if kept purely internal.
 
 Unreal classes tend to have a single letter prefix (the `A` at the start of `ARoverVehiclePawn`). They work as follows;
+
 | Prefix | Type Class | Managed by Garbage Collector?\* | Can place in World? |
 |---|---|---|---|
 | U | Object / Subsystem | Yes | No |
