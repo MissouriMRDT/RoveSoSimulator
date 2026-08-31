@@ -1,3 +1,6 @@
+---
+title: Organization
+---
 ## RoveSoSimulator Organization
 This document aims to give an overview of where things are stored and edited for RoveSoSimulator. 
 
