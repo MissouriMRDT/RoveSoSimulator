@@ -78,5 +78,11 @@ You should now be able to play it normally! To run autonomy, follow the steps  b
 
 If you encounter any issues, let the Simulation Lead know!
 
+## 2026 Fall Update
+
+1. Unreal Engine 5.6.1
+2. Clone RoveComm and edit AutonomyThread.hpp (/Source/ThirdParty/RoveComm/src/Interfaces/) as vaguely described in an issue called like RoveComm Not Updatable
+3. Download Sentry .zip (25.11.0 or smth we went with), put it in the /Plugins/ folder. Sentry did not work, so disable the plugin in the .build.cs and the sentry lines (~3 line group near the start) in RoveSoSimulatorInstance.cpp. Make sure to regenerate visual studio project files after
+4. Solverbody.h issue; VS may have an issue with an unreal engine file called Solverbody.h. It just needs paratheses along the lines of  **(**std:: ... ::min**)**() (unreal engine/VS issue. Use the stated file and line to find the exact location)
 ### **Logging & Data Analysis**
 Results and logs can be found in the `/logs` directory. To analyze data, refer to the provided scripts in the `/analysis` folder.
