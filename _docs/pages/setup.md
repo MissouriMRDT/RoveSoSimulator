@@ -7,7 +7,7 @@ title: RoveSoSimulator Setup
 ### **Install Prerequisites**
 #### Universal Dependencies:
 
-- [Unreal Engine 5](https://www.unrealengine.com/)
+- [Unreal Engine 5.6.1](https://www.unrealengine.com/)
 - [Git](https://git-scm.com/downloads)
 - [CMake](https://cmake.org/download/) (You may need to restart your computer after downloading CMake for it to properly work.)
 
@@ -37,7 +37,7 @@ Assistance for Linux Setup: [Setup on Linux](linux-setup)
 
 - Next you will want to install `Diversion` here: [Diversion](https://www.diversion.dev/). Create an account with whatever email you want to use, and install Diversion following the instructions for your OS. After you have created an account, message the Simulation Lead on Discord that you would like to help contribute as well as your email, and we will get you added to the repository.
 
-- Once you are added to the repo, you will want to clone it onto your machine. It is over 40GB, so it may take some time to be fully downloaded on your machine.
+- Once you are added to the repo, you will want to clone it onto your machine. It might be 40GB? It shouldn't be anymore, but Campus Wifi is crap, so it may take some time to be fully downloaded on your machine.
 
 - After it is cloned, you will want to install the `Diversion Unreal Engine Plugin` found here: [Unreal Plugin](https://docs.diversion.dev/unreal/unreal-engine-plugin). If you are on Windows, follow the instructions on the plugin's website to download and add the plugin to UE. If you are on Linux please proceed to this page: [Setup on Linux](linux-setup#getting-the-diversion-plugin)
 
