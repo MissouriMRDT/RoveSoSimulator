@@ -30,6 +30,15 @@ See static mesh editor and skeletal mesh editor pages for more specific informat
 `Toolbox (left) -> Skeleton (top) -> Edit Bones`
 ```mermaid
 graph LR
-Skeleton --> SkeletalMesh
-PhysicsAsset --> SkeletalMesh
+MaterialsNode[Materials]
+Skeleton[Skeleton] --> Skeletal_Mesh[Skeletal_Mesh]
+Physics_Asset --> Skeletal_Mesh[Skeletal_Mesh]
+SkeletalMesh["Skeletal Mesh"] --> Blueprint
+Blueprint[Blueprint] --> Level[Level]
+SkeletalMesh["Skeletal Mesh"] --> Level[Level]
+
+style SkeletalMesh fill:#BB2288
+style Blueprint fill:#0000DD
+style Level fill:#DD7700
+
 ```
