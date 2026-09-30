@@ -8,19 +8,23 @@ This page's source is me for now.
 
 Blueprints
 + Blueprint Class
+
 Used Regularly
 + Static Meshes and Skeletal Meshes, Skeletons, and Physics Assets
 + Materials, Material Instances, and Textures
 + Level
+
 Used Rarely
 + Animation Blueprint
   + Blend Space 1D
   + Animation Sequence & Montage
 + Control Rig
 + Physics Material
+
 Sets 
 + ZED set
 + Rover set
+
 Deprecated (stuff we should be past using, so don't make, and shouldn't find)
 + Input action
 + Input Action context
@@ -37,6 +41,7 @@ Blueprint class - seemingly, general blueprint. Very broad.
 + Game Mode Base - defines game being played, i.e. rules, scoring, etc.
 + Actor Component - reusable component that can be added to any actor
 + Scene Component - component with a scene transform that can be attached to another scene component
+
 Widget Blueprint - for UI. Have an extra editor area for UI. Otherwise could probably be a normal blueprint. <br>
 <br>
 Other blueprints are niche enough to not include here or I don't know about them.<br>
@@ -86,19 +91,23 @@ The difference between a static and skeletal mesh is whether or not you can move
     - Ex; the mechanical rover Arm(s) don't stretch,  
   - "Skin" is for when vertices that are connected via edge or a face need to move differently. This is where non-true-false number weights come in.
     -  Ex; People, creatures, anything with proper skin, not rigid pieces.
+
 <br>
 
 ### Physics
 Static meshes have hitboxes that don't move with respect to one another, like vertices. They can be viewed and modified in the static mesh editor, and are contained in the static mesh asset itself. They consist only of primitives. <br>
 <br>
+
 Skeletal meshes use a physics asset to organize their hitboxes, constraints, etc. The Physics Asset has three main additions on top of the skeleton; physic bodies, primitives, and constraints. <br>
 Physic bodies are groups of primitives, and contain properties like mass, dampening, gravity, etc.
 + Always attached to a single bone
 + List of Primitives for a physics body can be viewed in the `Details` panel after clicking the physics body or by revealing them in the `Skeleton Tree` panel 
+
 Primitives are the actual shapes that make up the collision area; 
 + they can be custom (convex category?), otherwise they are boxes, capsules, or spheres (some other niche ones).
 + collisions are made with a combination of the primitives. Making new body types requires copying them from something that already has them; some static meshes serve the specific purpose of holding these sets of primitives.
 + List of Primitives for a physics body can be viewed in the `Details` panel after clicking the physics body or by revealing them in the `Skeleton Tree` panel 
+
 Constraints connect and limit physics bodies.
 + This includes both angular and linear limits
 + Always between two bodies, but the parent varies.
@@ -126,6 +135,7 @@ It is frequently much easier to (at least with cad models) simply have "constant
 <br>
 A mesh could be entirely textured with just one material through using UVs over a complex image (like sprite-sheets). This would allow for one material per asset, and one asset per material; this guarantees changing the material only affects that one asset. However, sometimes it makes sense for multiple assets to use the same material; 
 + for example, there is a texture for shiny metal (might be aluminum?); making it more accurate means everything with that assigned aluminum gets the update. However, as it is "metal", some meshes that use it may have only looked right with the previous version, so it is important to differentiate between specific materials (aluminum) and general use materials ("metal"). The workspace is not currently in line with this practice, as aluminum is just the "metal".
+
 In short, use the general to color things for contrast rather than realism. Use specific materials if you know what a specific piece should be.<br>
 
 ### Materials folder
@@ -135,13 +145,16 @@ The materials folder, referenced in some other doc about the directories, contai
 + LEDs; originally in this directory. Material for the LED Panel, and the texture that it uses.
 + Material Functions; a singular Material function, which creates a checkerboard. May effectively be a texture generated via math like the materials.
 + Physic Materials; friction and such materials. not like normal materials
+
 Some textures/materials ARE only used by one-ish specific asset, as in the case of the autonomy objects and tags, so those materials are left with them.<br>
 <br>
+
 Practice should be as follows;
 + One very unique one off asset, like the rock pick, people, and tags? Keep it's materials with it
 + Specific colors, like for Athena's shades of red? In its own complex materials folder, as we sort by `Module` then `Year`, so there is no `2026` folder.
 + Actually "Material" materials, like aluminum? ComplexMaterials, as it is used more widely and should have its updates affect all that use it.
 + General colors, like making something yellow? CommonColors. Should be named by hexcode, so the materials themselves shouldn't be changed.
+
 Keep in mind that, when adding assets, they use the logical ones to get from these folders. Fine to add to common colors if there isn't the color needed, but do consider if the asset using it should have its own group of materials.
 
 ### Editors
