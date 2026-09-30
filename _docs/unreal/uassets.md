@@ -9,11 +9,8 @@ This page's source is me for now.
 Blueprints
 + Blueprint Class
 Used Regularly
-+ Static Mesh
-+ Skeletal Mesh
-+ Material
-  + Material Instance
-+ Texture
++ Static Meshes, Skeletal Meshes, and Skeletons
++ Materials, Material Instances, and Textures
 + Physics Asset
 + Level
 Used Rarely
@@ -84,11 +81,27 @@ The difference between a static and skeletal mesh is whether or not you can move
   - "Skin" is for when vertices that are connected via edge or a face need to move differently. This is where non-true-false number weights come in.
     -  Ex; People, creatures, anything with proper skin, not rigid pieces.
 <br>
-Static meshes are a one asset ............
+Skeletal meshes have hitboxes, constraints, etc. for physics based interaction in an attached Physics Asset (see that section for more info).<br>
+Static meshes have theirs in their editor. <br>
+<br>
 
-See static mesh editor and skeletal mesh editor pages for more specific information.
+### Editors
+Static mesh editor for static meshes.<br>
+<br>
+Skeletal mesh editor for Skeletal meshes and Skeletons.<br>
+Skeleton editor for Skeletons; as of yet, never used.<br>
 
-
+## Materials, Material Instances, and Textures
+Materials are the things used to provide colors and texture to assets. They use nodes.<br>
+Material Instances and Textures are less frequently used. <br>
+<br>
+I am generally unfamiliar with the specifics of the relationship between material instances and materials. <br>
+<br>
+Textures are, as far as I can tell, mostly imported - that is to say, you can't change them much. They are effectively images.<br>
+Materials ............
+<br>
+Materials are put in "material slots" of assets (just meshes as far as I can remember). A material slot is associated with a group of faces, and through a UV map, maps the material onto those faces.<br>
+Materials 
 
 # cuts
 `Toolbox (left) -> Skeleton (top) -> Edit Bones`
