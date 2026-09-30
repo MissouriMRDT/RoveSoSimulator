@@ -67,12 +67,12 @@ style Level fill:#DD7700,color:#000000
 ```
 
 *Blueprints are their own nightmare, but are frequently what is actually placed into the level.<br>
-*Some assets, like skeletons and physics assets, reference a mesh to display. These are not included.
+*Some assets, like skeletons and physics assets, reference a mesh to display. These are not included.<br>
 *Materials are by default inherited, so a blueprint's skeletal mesh instance will update if the skeletal mesh asset updates its materials. I don't believe the same is true for static meshes to skeletal.
 
 ## Static Meshes and Skeletal Meshes, Skeletons, and Physics Assets
 First, mesh definition - A mesh is a combination of connected vertices. The connected vertices make edges and faces. Faces are what are actually visible.<br>
-ex; Rover, PVC pipe, Person<br>
++ ex; Rover, PVC pipe, Person
 
 Second, the definition of a skeleton (SK);<br>
 A skeleton is made up of bones and sockets. All bones are also sockets. Bones have a hierarchy, sockets do not. <br>
