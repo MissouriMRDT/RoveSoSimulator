@@ -49,14 +49,18 @@ Assets that we use frequently enough that you should know what they are.
 graph LR
 Material[Materials] --> SkeletalMesh
 Material --> Blueprint
+Material --> StaticMesh
 Skeleton[Skeleton] --> SkeletalMesh[SkeletalMesh]
 PhysicsAsset --> SkeletalMesh[SkeletalMesh]
-SkeletalMesh["Skeletal Mesh"] --> Blueprint
 Blueprint[Blueprint] --> Level[Level]
+SkeletalMesh["Skeletal Mesh"] --> Blueprint
 SkeletalMesh["Skeletal Mesh"] --> Level[Level]
+StaticMesh["Static Mesh"] --> Blueprint
+StaticMesh["Static Mesh"] --> Level[Level]
 
 style Material fill:#40c040,color:#000000
 style SkeletalMesh fill:#f1a3f1,color:#000000
+style StaticMesh fill:#00ffff,color:#000000
 style Skeleton fill:#69b5cd,color:#000000
 style PhysicsAsset fill:#ffc080,color:#000000
 style Blueprint fill:#0000DD
